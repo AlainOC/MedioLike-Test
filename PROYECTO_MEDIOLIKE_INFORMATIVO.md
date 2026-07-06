@@ -284,15 +284,104 @@ Establecer la estructura base del proyecto, incluyendo configuración del fronte
 
 ---
 
-## 📝 Próximos Pasos (Sprint 2 en adelante)
+## 🔄 Metodología de Desarrollo Full Stack (Sprints 2 al 6)
 
-1. **Desarrollo de módulos funcionales** (Usuarios, Cursos, Inscripciones)
-2. **Integración de pasarela de pagos** (Stripe/PayPal)
-3. **Sistema de notificaciones** (Email, SMS)
-4. **Generación de certificados con QR**
-5. **Eventos en vivo y streaming**
-6. **Dashboard de reportes y analítica**
-7. **Aplicación móvil** (Futuro)
+A partir del Sprint 2, cada desarrollador será responsable de construir su módulo de principio a fin. Las responsabilidades abarcan:
+- **Base de datos**: Diseño del modelo, relaciones, migraciones e índices.
+- **API**: Implementación en Express con Arquitectura Limpia (Entidades, Repositorios, Casos de Uso, DTOs, Controladores y Rutas).
+- **Frontend**: Angular + PrimeNG, componentes, servicios, formularios, tablas y navegación.
+- **Documentación**: Swagger/OpenAPI y documentación técnica.
+- **Pruebas**: Pruebas unitarias, de integración y validación del módulo.
+
+---
+
+## 📅 SPRINT 2 – Administración y Seguridad
+
+### 📌 Alain
+- **Módulo**: Usuarios, Roles, Permisos y Configuración.
+- **Trabajo asignado**: Desarrollo completo (BD, API, Frontend, Documentación Swagger y Pruebas).
+
+### 📌 Pablo
+- **Módulo**: Categorías e Instructores.
+- **Trabajo asignado**: Desarrollo completo (BD, API, Frontend, Documentación Swagger y Pruebas).
+
+### 📌 Joaquín
+- **Módulo**: Landing Page, Registro y Catálogo de Cursos.
+- **Trabajo asignado**: Desarrollo completo (BD, API, Frontend, Documentación Swagger y Pruebas).
+
+---
+
+## 📅 SPRINT 3 – Gestión Académica
+
+### 📌 Alain
+- **Módulo**: Auditoría y Notificaciones.
+- **Trabajo asignado**: Desarrollo completo (BD, API, Frontend, Documentación Swagger y Pruebas).
+
+### 📌 Pablo
+- **Módulo**: Cursos, Módulos, Lecciones y Recursos.
+- **Trabajo asignado**: Desarrollo completo (BD, API, Frontend, Documentación Swagger y Pruebas).
+
+### 📌 Joaquín
+- **Módulo**: Participantes y Dashboard del Estudiante.
+- **Trabajo asignado**: Desarrollo completo (BD, API, Frontend, Documentación Swagger y Pruebas).
+
+---
+
+## 📅 SPRINT 4 – Comercialización
+
+### 📌 Alain
+- **Módulo**: Configuración General y Bitácora de Auditoría.
+- **Trabajo asignado**: Desarrollo completo (BD, API, Frontend, Documentación Swagger y Pruebas).
+
+### 📌 Pablo
+- **Módulo**: Evaluaciones y Certificados.
+- **Trabajo asignado**: Desarrollo completo (BD, API, Frontend, Documentación Swagger y Pruebas).
+
+### 📌 Joaquín
+- **Módulo**: Inscripciones, Membresías y Pagos.
+- **Trabajo asignado**: Desarrollo completo (BD, API, Frontend, Documentación Swagger y Pruebas).
+
+---
+
+## 📅 SPRINT 5 – Eventos y Experiencia
+
+### 📌 Alain
+- **Módulo**: Administración de Instructores.
+- **Trabajo asignado**: Desarrollo completo (BD, API, Frontend, Documentación Swagger y Pruebas).
+
+### 📌 Pablo
+- **Módulo**: Seguimiento del Progreso y Material Didáctico.
+- **Trabajo asignado**: Desarrollo completo (BD, API, Frontend, Documentación Swagger y Pruebas).
+
+### 📌 Joaquín
+- **Módulo**: Eventos en Vivo, Calendario y Registro de Participantes.
+- **Trabajo asignado**: Desarrollo completo (BD, API, Frontend, Documentación Swagger y Pruebas).
+
+---
+
+## 📅 SPRINT 6 – Cierre del MVP
+
+### 📌 Alain
+- **Módulo**: Seguridad, Optimización y Hardening.
+- **Trabajo asignado**: Desarrollo completo (BD, API, Frontend, Documentación Swagger y Pruebas).
+
+### 📌 Pablo
+- **Módulo**: Reportes Académicos.
+- **Trabajo asignado**: Desarrollo completo (BD, API, Frontend, Documentación Swagger y Pruebas).
+
+### 📌 Joaquín
+- **Módulo**: Dashboard Administrativo y Reportes Comerciales.
+- **Trabajo asignado**: Desarrollo completo (BD, API, Frontend, Documentación Swagger y Pruebas).
+
+---
+
+## 🎯 Entregables Finales
+- Aplicación web funcional.
+- API Express documentada con Swagger.
+- Frontend Angular + PrimeNG funcional.
+- Base de datos implementada.
+- Gestión de cursos, participantes, membresías, pagos y certificados.
+- Repositorio documentado y listo para producción.
 
 ---
 
