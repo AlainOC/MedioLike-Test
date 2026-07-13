@@ -1,0 +1,94 @@
+<div class="card p-4 mx-4 my-4 shadow-sm border-round border-1 surface-border">
+    <h2>Configuración del Sistema</h2>
+
+    <div class="mb-3 flex justify-content-end">
+        <p-button label="Nueva Configuración" icon="pi pi-plus" (onClick)="showDialog()"></p-button>
+    </div>
+
+    <p-table [value]="settings" [paginator]="true" [rows]="10" responsiveLayout="scroll">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Clave</th>
+                <th>Valor</th>
+                <th>Privacidad</th>
+                <th>Actualizado</th>
+                <th>Acciones</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-setting>
+            <tr>
+                <td>
+                    <span class="font-bold">{{setting.key}}</span>
+                    <br><small class="text-500">{{setting.description}}</small>
+                </td>
+                <td>{{setting.value}} <i>({{setting.valueType}})</i></td>
+                <td>
+                    <i class="pi"
+                        [ngClass]="{'pi-eye text-green-500': setting.isPublic, 'pi-eye-slash text-red-500': !setting.isPublic}"></i>
+                </td>
+                <td>{{setting.updatedAt | date:'medium'}}</td>
+                <td>
+                    <p-button icon="pi pi-pencil" styleClass="p-button-rounded p-button-info mr-2" size="small"
+                        (onClick)="showDialog(setting)"></p-button>
+                    <p-button icon="pi pi-trash" styleClass="p-button-rounded p-button-danger" size="small"
+                        (onClick)="deleteSetting(setting.id)"></p-button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="5">No se encontraron configuraciones.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <p-dialog [(visible)]="displayDialog" [style]="{width: '500px'}"
+        [header]="isEditMode ? 'Editar Configuración' : 'Nueva Configuración'" [modal]="true" class="p-fluid">
+        <form [formGroup]="settingForm" (ngSubmit)="saveSetting()">
+            <div class="field">
+                <label for="key">Clave (Ej. TIME_ZONE)</label>
+                <input type="text" pInputText id="key" formControlName="key" required autofocus autocomplete="off" />
+            </div>
+
+            <div class="field mt-3">
+                <label for="value">Valor</label>
+                <input type="text" pInputText id="value" formControlName="value" required />
+            </div>
+
+            <div class="field mt-3">
+                <label for="valueType">Tipo de Valor</label>
+                <div class="flex flex-wrap gap-3 mt-2">
+                    <div class="flex align-items-center">
+                        <input type="radio" id="stringType" value="string" formControlName="valueType">
+                        <label for="stringType" class="ml-2">String</label>
+                    </div>
+                    <div class="flex align-items-center">
+                        <input type="radio" id="booleanType" value="boolean" formControlName="valueType">
+                        <label for="booleanType" class="ml-2">Booleano</label>
+                    </div>
+                    <div class="flex align-items-center">
+                        <input type="radio" id="jsonType" value="json" formControlName="valueType">
+                        <label for="jsonType" class="ml-2">JSON</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field mt-3">
+                <label for="description">Descripción</label>
+                <input type="text" pInputText id="description" formControlName="description" />
+            </div>
+
+            <div class="field-checkbox mt-4">
+                <p-checkbox formControlName="isPublic" [binary]="true" inputId="isPublic"></p-checkbox>
+                <label for="isPublic">Hacer público para clientes (Frontend sin token)</label>
+            </div>
+
+            <div class="form-actions mt-4 flex justify-content-end">
+                <p-button label="Cancelar" icon="pi pi-times" class="p-button-text mr-2"
+                    (onClick)="hideDialog()"></p-button>
+                <p-button [label]="isEditMode ? 'Actualizar' : 'Guardar'" icon="pi pi-check" type="submit"
+                    [disabled]="settingForm.invalid"></p-button>
+            </div>
+        </form>
+    </p-dialog>
+</div>

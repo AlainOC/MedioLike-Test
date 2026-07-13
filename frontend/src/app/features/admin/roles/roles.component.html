@@ -1,0 +1,61 @@
+<div class="card p-4 mx-4 my-4 shadow-sm border-round border-1 surface-border">
+    <h2>Administración de Roles y Permisos</h2>
+
+    <div class="mb-3 flex justify-content-end">
+        <p-button label="Nuevo Rol" icon="pi pi-plus" (onClick)="showDialog()"></p-button>
+    </div>
+
+    <p-table [value]="roles" [paginator]="true" [rows]="10" responsiveLayout="scroll">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Creado En</th>
+                <th>Acciones</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-role>
+            <tr>
+                <td>{{role.id.substring(0,8)}}...</td>
+                <td>
+                    <span class="font-bold text-primary">{{role.name}}</span>
+                </td>
+                <td>{{role.description}}</td>
+                <td>{{role.createdAt | date}}</td>
+                <td>
+                    <p-button icon="pi pi-shield" styleClass="p-button-rounded p-button-warning mr-2" size="small"
+                        title="Asignar Permisos"></p-button>
+                    <p-button icon="pi pi-pencil" styleClass="p-button-rounded p-button-info mr-2"
+                        size="small"></p-button>
+                    <p-button icon="pi pi-trash" styleClass="p-button-rounded p-button-danger" size="small"
+                        (onClick)="deleteRole(role.id)"></p-button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="5">No se encontraron roles en la BD.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <p-dialog [(visible)]="displayDialog" [style]="{width: '450px'}" header="Detalles del Rol" [modal]="true"
+        class="p-fluid">
+        <form [formGroup]="roleForm" (ngSubmit)="saveRole()">
+            <div class="field">
+                <label for="name">Nombre del Rol</label>
+                <input type="text" pInputText id="name" formControlName="name" required autofocus />
+            </div>
+            <div class="field mt-3">
+                <label for="description">Descripción</label>
+                <input type="text" pInputText id="description" formControlName="description" />
+            </div>
+            <div class="form-actions mt-4 flex justify-content-end">
+                <p-button label="Cancelar" icon="pi pi-times" class="p-button-text mr-2"
+                    (onClick)="hideDialog()"></p-button>
+                <p-button label="Guardar Rol" icon="pi pi-check" type="submit" [disabled]="roleForm.invalid"></p-button>
+            </div>
+        </form>
+    </p-dialog>
+</div>

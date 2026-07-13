@@ -1,0 +1,26 @@
+<div class="layout-wrapper flex flex-column min-h-screen surface-ground">
+  <!-- Navbar/Header -->
+  <header class="surface-card shadow-1 p-3 flex align-items-center justify-content-between">
+    <div class="flex align-items-center">
+      <h1 class="m-0 text-xl font-semibold text-primary">MedioLike - Administration</h1>
+    </div>
+    <nav class="flex gap-3">
+      <a routerLink="/users" routerLinkActive="text-primary font-bold"
+        class="text-700 hover:text-primary no-underline transition-colors transition-duration-150 cursor-pointer">Usuarios</a>
+      <a routerLink="/roles" routerLinkActive="text-primary font-bold"
+        class="text-700 hover:text-primary no-underline transition-colors transition-duration-150 cursor-pointer">Roles</a>
+      <a routerLink="/settings" routerLinkActive="text-primary font-bold"
+        class="text-700 hover:text-primary no-underline transition-colors transition-duration-150 cursor-pointer">Ajustes</a>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow-1 p-4">
+    <router-outlet></router-outlet>
+  </main>
+
+  <!-- Footer -->
+  <footer class="surface-card p-3 text-center text-500 shadow-1 mt-auto">
+    MedioLike &copy; 2026. Módulo de Seguridad.
+  </footer>
+</div>
