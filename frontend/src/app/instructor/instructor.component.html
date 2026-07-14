@@ -1,0 +1,136 @@
+<!-- Notificaciones -->
+<p-toast></p-toast>
+
+<div class="card p-4">
+  <!-- Toolbar Superior -->
+  <p-toolbar styleClass="mb-4 gap-2">
+    <ng-template pTemplate="left">
+      <button
+        pButton
+        pRipple
+        label="Nuevo Instructor"
+        icon="pi pi-plus"
+        class="p-button-success mr-2"
+        (click)="openNew()">
+      </button>
+    </ng-template>
+  </p-toolbar>
+
+  <!-- Tabla Responsiva -->
+  <p-table
+    #dt
+    [value]="instructors"
+    [rows]="10"
+    [paginator]="true"
+    [globalFilterFields]="['name','specialty']"
+    responsiveLayout="scroll"
+    [rowHover]="true"
+    dataKey="id"
+    currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} instructores"
+    [showCurrentPageReport]="true">
+
+    <ng-template pTemplate="caption">
+      <div class="flex align-items-center justify-content-between">
+        <h5 class="m-0 text-xl font-bold">Gestión de Instructores</h5>
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="name">Nombre <p-sortIcon field="name"></p-sortIcon></th>
+        <th>Foto</th>
+        <th pSortableColumn="specialty">Especialidad <p-sortIcon field="specialty"></p-sortIcon></th>
+        <th>Acciones</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-instructor>
+      <tr>
+        <td>{{ instructor.name }}</td>
+        <td>
+          <img [src]="instructor.photoUrl" [alt]="instructor.name" width="50" class="shadow-4" style="border-radius: 50%; object-fit: cover;" />
+        </td>
+        <td>{{ instructor.specialty }}</td>
+        <td>
+          <button
+            pButton
+            pRipple
+            icon="pi pi-pencil"
+            class="p-button-rounded p-button-outlined p-button-success mr-2"
+            (click)="editInstructor(instructor)">
+          </button>
+          <button
+            pButton
+            pRipple
+            icon="pi pi-trash"
+            class="p-button-rounded p-button-outlined p-button-danger"
+            (click)="deleteInstructor(instructor)">
+          </button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<!-- Modal para Crear/Editar Instructor -->
+<p-dialog
+  [(visible)]="instructorDialog"
+  [style]="{width: '500px'}"
+  header="Detalles del Instructor"
+  [modal]="true"
+  styleClass="p-fluid">
+
+  <ng-template pTemplate="content">
+    <form [formGroup]="instructorForm" class="mt-2">
+      <!-- Nombre -->
+      <div class="field mb-3">
+        <label for="name" class="font-bold">Nombre</label>
+        <input type="text" pInputText id="name" formControlName="name" autofocus />
+        @if (submitted && instructorForm.get('name')?.invalid) {
+          <small class="p-error block mt-1">
+            El nombre es requerido.
+          </small>
+        }
+      </div>
+
+      <!-- Especialidad -->
+      <div class="field mb-3">
+        <label for="specialty" class="font-bold">Especialidad</label>
+        <input type="text" pInputText id="specialty" formControlName="specialty" />
+        @if (submitted && instructorForm.get('specialty')?.invalid) {
+          <small class="p-error block mt-1">
+            La especialidad es requerida.
+          </small>
+        }
+      </div>
+
+      <!-- Biografía -->
+      <div class="field mb-3">
+        <label for="biography" class="font-bold">Biografía</label>
+        <textarea id="biography" pInputTextarea formControlName="biography" rows="4"></textarea>
+        @if (submitted && instructorForm.get('biography')?.invalid) {
+          <small class="p-error block mt-1">
+            La biografía es requerida.
+          </small>
+        }
+      </div>
+
+      <!-- Foto URL -->
+      <div class="field mb-3">
+        <label for="photoUrl" class="font-bold">URL de la Foto</label>
+        <input type="text" pInputText id="photoUrl" formControlName="photoUrl" />
+        @if (submitted && instructorForm.get('photoUrl')?.invalid) {
+          <small class="p-error block mt-1">
+            La URL de la foto es requerida.
+          </small>
+        }
+      </div>
+    </form>
+  </ng-template>
+
+  <!-- Botones Footer -->
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancelar" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+    <button pButton pRipple label="Guardar" icon="pi pi-check" class="p-button-primary" (click)="saveInstructor()"></button>
+  </ng-template>
+</p-dialog>
