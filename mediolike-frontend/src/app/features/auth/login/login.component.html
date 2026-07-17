@@ -1,0 +1,91 @@
+<div class="page-wrapper">
+  <div class="container" [class.right-panel-active]="isRightPanelActive">
+    
+    <!-- Sign Up Form (Left Side when Active) -->
+    <div class="form-container sign-up-container">
+      <form (submit)="onRegister($event)">
+        <h2>Crear Cuenta</h2>
+        <span class="subtitle">Únete a Mediolike</span>
+        
+        <div class="input-group-row">
+          <div class="input-field">
+            <label>Nombre(s)</label>
+            <input type="text" placeholder="Juan" />
+          </div>
+        </div>
+
+        <div class="input-group-row col-2">
+          <div class="input-field">
+            <label>Apellido Paterno</label>
+            <input type="text" placeholder="Pérez" />
+          </div>
+          <div class="input-field">
+            <label>Apellido Materno</label>
+            <input type="text" placeholder="García" />
+          </div>
+        </div>
+
+        <div class="input-field">
+          <label>Correo Electrónico</label>
+          <input type="email" placeholder="ejemplo@correo.com" />
+        </div>
+
+        <div class="input-field">
+          <label>Contraseña</label>
+          <input type="password" placeholder="••••••••" />
+        </div>
+        
+        <button type="submit" class="primary-btn mt-3">REGÍSTRATE</button>
+      </form>
+    </div>
+
+    <!-- Sign In Form (Right Side when Active) -->
+    <div class="form-container sign-in-container">
+      <form (submit)="onLogin($event)">
+        <h2>Iniciar Sesión</h2>
+        <span class="subtitle">Gestiona tu aprendizaje</span>
+        
+        <div class="input-field mt-3">
+          <label>Correo Electrónico</label>
+          <input type="email" placeholder="ejemplo@correo.com" [(ngModel)]="loginEmail" name="email" />
+        </div>
+
+        <div class="input-field">
+          <label>Contraseña</label>
+          <input type="password" placeholder="••••••••" [(ngModel)]="loginPassword" name="password" />
+          <a routerLink="/forgot-password" class="forgot-link">¿Olvidaste tu contraseña?</a>
+        </div>
+        
+        <div class="test-accounts" style="margin-top: 15px; font-size: 0.8rem; color: #64748b; background: #f8fafc; padding: 10px; border-radius: 8px;">
+          <strong>Cuentas de prueba:</strong><br>
+          Admin: <i>admin&#64;mediolike.com</i><br>
+          Instructor: <i>instructor&#64;mediolike.com</i><br>
+          Estudiante: <i>Cualquier otro correo</i>
+        </div>
+
+        <button type="submit" class="primary-btn mt-3">INGRESAR</button>
+      </form>
+    </div>
+
+    <!-- Overlay Container (The sliding colored block) -->
+    <div class="overlay-container">
+      <div class="overlay">
+        
+        <!-- Overlay Left (Shown when registering) -->
+        <div class="overlay-panel overlay-left">
+          <h2>¡Hola de Nuevo!</h2>
+          <p>Si ya tienes una cuenta con nosotros, ingresa aquí para ver tus cursos.</p>
+          <button class="ghost-btn" (click)="togglePanel(false)">INICIAR SESIÓN</button>
+        </div>
+        
+        <!-- Overlay Right (Shown when logging in) -->
+        <div class="overlay-panel overlay-right">
+          <h2>¿Nuevo aquí?</h2>
+          <p>Regístrate gratis para comenzar a explorar nuestro portal de forma inmediata.</p>
+          <button class="ghost-btn" (click)="togglePanel(true)">REGISTRARSE</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

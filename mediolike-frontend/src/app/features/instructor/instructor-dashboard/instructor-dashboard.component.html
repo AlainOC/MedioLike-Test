@@ -1,0 +1,63 @@
+<div class="instructor-dashboard">
+  
+  <div class="dashboard-header">
+    <div>
+      <h1>Panel del Instructor</h1>
+      <p>Bienvenido de vuelta. Aquí tienes un resumen de tu impacto.</p>
+    </div>
+    <div class="header-actions">
+      <button class="btn-primary" routerLink="/app/instructor/courses/new"><i class="pi pi-plus"></i> Crear Nuevo Curso</button>
+      <button class="btn-secondary" routerLink="/app/instructor/live"><i class="pi pi-video"></i> Programar Live</button>
+    </div>
+  </div>
+
+  <div class="metrics-grid">
+    <div class="metric-card" *ngFor="let metric of metrics">
+      <div class="metric-icon" [style.backgroundColor]="metric.color + '20'" [style.color]="metric.color">
+        <i class="pi {{metric.icon}}"></i>
+      </div>
+      <div class="metric-info">
+        <h3>{{ metric.value }}</h3>
+        <p>{{ metric.label }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="courses-section">
+    <div class="section-header">
+      <h2>Mis Cursos</h2>
+      <div class="search-box">
+        <i class="pi pi-search"></i>
+        <input type="text" placeholder="Buscar curso...">
+      </div>
+    </div>
+
+    <div class="courses-table">
+      <div class="table-header">
+        <div class="col-title">Curso</div>
+        <div class="col-status">Estado</div>
+        <div class="col-stats">Estudiantes</div>
+        <div class="col-stats">Ingresos</div>
+        <div class="col-stats">Rating</div>
+        <div class="col-actions">Acciones</div>
+      </div>
+
+      <div class="table-row" *ngFor="let course of myCourses">
+        <div class="col-title font-semibold">{{ course.title }}</div>
+        <div class="col-status">
+          <span class="badge" [ngClass]="{'badge-success': course.status === 'Publicado', 'badge-warning': course.status === 'En Borrador'}">
+            {{ course.status }}
+          </span>
+        </div>
+        <div class="col-stats">{{ course.students }}</div>
+        <div class="col-stats">{{ course.revenue }}</div>
+        <div class="col-stats"><i class="pi pi-star-fill text-yellow-500 text-sm"></i> {{ course.rating || '-' }}</div>
+        <div class="col-actions">
+          <button class="action-icon" title="Editar" (click)="editCourse(course)"><i class="pi pi-pencil"></i></button>
+          <button class="action-icon" title="Analíticas" (click)="viewAnalytics(course)"><i class="pi pi-chart-bar"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

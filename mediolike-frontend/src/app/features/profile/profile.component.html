@@ -1,0 +1,63 @@
+<div class="profile-container">
+  
+  <div class="profile-header">
+    <div class="header-bg"></div>
+    <div class="header-content">
+      <div class="avatar">{{ profileData.firstName.charAt(0) }}{{ profileData.lastName.charAt(0) }}</div>
+      <div class="user-info">
+        <h1>{{ profileData.firstName }} {{ profileData.lastName }}</h1>
+        <p class="role-badge"><i class="pi pi-verified"></i> {{ profileData.role }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="profile-body">
+    
+    <div class="settings-card">
+      <h2>Configuración de Perfil</h2>
+      <p class="subtitle">Actualiza tu información personal y detalles de contacto.</p>
+      
+      <form class="profile-form" (ngSubmit)="saveProfile()">
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" [(ngModel)]="profileData.firstName" name="firstName" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Apellidos</label>
+            <input type="text" [(ngModel)]="profileData.lastName" name="lastName" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Correo Electrónico</label>
+            <input type="email" [(ngModel)]="profileData.email" name="email" class="form-control" disabled>
+            <span class="help-text">Contacta a soporte para cambiar tu correo.</span>
+          </div>
+          <div class="form-group">
+            <label>Teléfono</label>
+            <input type="tel" [(ngModel)]="profileData.phone" name="phone" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Ubicación</label>
+          <input type="text" [(ngModel)]="profileData.location" name="location" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label>Biografía</label>
+          <textarea [(ngModel)]="profileData.bio" name="bio" class="form-control" rows="4" placeholder="Cuéntanos un poco sobre ti..."></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn-secondary">Cancelar</button>
+          <button type="submit" class="btn-primary">Guardar Cambios</button>
+        </div>
+      </form>
+    </div>
+    
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="admin-container">
+  
+  <div class="page-header">
+    <h1>Membresías y Pagos</h1>
+    <p>Configura las comisiones de la plataforma y monitorea las transacciones recientes.</p>
+  </div>
+
+  <div class="split-layout">
+    
+    <!-- Configuración Global -->
+    <div class="config-card">
+      <div class="card-header">
+        <i class="pi pi-cog"></i> Configuración Global
+      </div>
+      <div class="card-body">
+        <p class="desc">Define el porcentaje de comisión que la plataforma retiene de las ventas de los instructores (RN-015).</p>
+        <div class="form-group">
+          <label>Comisión de Plataforma (%)</label>
+          <div class="input-with-btn">
+            <input type="number" [(ngModel)]="platformCommission">
+            <button class="btn-primary" (click)="updateCommission()">Actualizar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Transacciones Recientes -->
+    <div class="transactions-card">
+      <div class="card-header">
+        <i class="pi pi-receipt"></i> Transacciones Recientes
+      </div>
+      
+      <div class="data-table">
+        <div class="table-header">
+          <div class="col-id">ID</div>
+          <div class="col-user">Usuario / Curso</div>
+          <div class="col-amount">Monto</div>
+          <div class="col-status">Estado</div>
+        </div>
+
+        <div class="table-row" *ngFor="let trx of transactions">
+          <div class="col-id font-mono text-sm text-gray-500">{{ trx.id }}</div>
+          <div class="col-user">
+            <span class="font-semibold">{{ trx.user }}</span>
+            <span class="text-xs text-gray-500">{{ trx.course }}</span>
+          </div>
+          <div class="col-amount font-semibold">{{ trx.amount }}</div>
+          <div class="col-status">
+            <span class="status-badge" [class.success]="trx.status === 'Completado'" [class.refund]="trx.status === 'Reembolsado'">
+              {{ trx.status }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

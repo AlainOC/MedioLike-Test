@@ -1,0 +1,47 @@
+<div class="live-builder">
+  <div class="header">
+    <a routerLink="/app/instructor/dashboard" class="back-link"><i class="pi pi-arrow-left"></i> Volver al Panel</a>
+    <h1>Programar Evento en Vivo</h1>
+    <p>Conecta con tus estudiantes en tiempo real a través de transmisiones en directo.</p>
+  </div>
+
+  <div class="form-container">
+    <div class="info-alert">
+      <i class="pi pi-info-circle"></i>
+      <span>Actualmente soportamos integración con YouTube Live, Twitch y Zoom. Pega tu enlace de transmisión abajo.</span>
+    </div>
+
+    <form (ngSubmit)="scheduleEvent()">
+      <div class="form-group">
+        <label>Título del Evento</label>
+        <input type="text" [(ngModel)]="eventData.title" name="title" placeholder="Ej: Q&A - Dudas sobre el Proyecto Final" required>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>Fecha</label>
+          <input type="date" [(ngModel)]="eventData.date" name="date" required>
+        </div>
+        <div class="form-group">
+          <label>Hora</label>
+          <input type="time" [(ngModel)]="eventData.time" name="time" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Descripción Corta</label>
+        <textarea [(ngModel)]="eventData.description" name="description" rows="3" placeholder="¿De qué tratará la sesión?"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Enlace de Transmisión (URL)</label>
+        <input type="url" [(ngModel)]="eventData.streamLink" name="streamLink" placeholder="https://youtube.com/live/..." required>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn-secondary" routerLink="/app/instructor/dashboard">Cancelar</button>
+        <button type="submit" class="btn-primary">Programar y Notificar Alumnos</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="course-detail-container">
+  
+  <div class="course-header">
+    <div class="header-content">
+      <div class="badge">{{ course.category }}</div>
+      <h1>{{ course.title }}</h1>
+      <p class="description">{{ course.description }}</p>
+      
+      <div class="meta">
+        <span class="rating"><i class="pi pi-star-fill"></i> {{ course.rating }}</span>
+        <span class="students"><i class="pi pi-users"></i> {{ course.students }} estudiantes</span>
+        <span class="instructor"><i class="pi pi-user"></i> Creado por: <b>{{ course.instructor }}</b></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="course-body">
+    <div class="main-column">
+      <h2>Temario del Curso</h2>
+      <div class="syllabus">
+        <div class="module" *ngFor="let mod of course.syllabus">
+          <div class="module-header">
+            <h3>{{ mod.module }}</h3>
+            <span>{{ mod.duration }}</span>
+          </div>
+          <ul class="lesson-list">
+            <li *ngFor="let lesson of mod.lessons">
+              <i class="pi pi-play-circle"></i> {{ lesson }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-column">
+      <div class="checkout-card">
+        <img [src]="course.image" [alt]="course.title" class="preview-img">
+        <div class="checkout-info">
+          <div class="price-tag">${{ course.price }}</div>
+          <button class="enroll-btn" (click)="enroll()">Inscribirse Ahora</button>
+          
+          <ul class="features">
+            <li><i class="pi pi-video"></i> Acceso de por vida</li>
+            <li><i class="pi pi-mobile"></i> Acceso en móvil y TV</li>
+            <li><i class="pi pi-file"></i> Tareas y recursos</li>
+            <li><i class="pi pi-verified"></i> Certificado de finalización</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

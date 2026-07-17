@@ -1,0 +1,138 @@
+<div class="app-layout">
+  <!-- SIDEBAR IZQUIERDO (YouTube Style: Colapsable a íconos) -->
+  <aside class="sidebar" [class.open]="sidebarOpen" [class.mini]="miniSidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <i class="pi pi-box logo-icon"></i>
+        <span class="logo-text">Medio<b>like</b></span>
+      </div>
+      <button class="close-btn d-mobile" (click)="toggleSidebar()">
+        <i class="pi pi-times"></i>
+      </button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a routerLink="/app/dashboard" routerLinkActive="active" class="nav-item" pTooltip="Inicio" tooltipPosition="right">
+        <i class="pi pi-home"></i> <span class="nav-text">Inicio</span>
+      </a>
+      <a routerLink="/app/profile" routerLinkActive="active" class="nav-item" pTooltip="Mi Perfil" tooltipPosition="right">
+        <i class="pi pi-user"></i> <span class="nav-text">Mi Perfil</span>
+      </a>
+
+      <!-- Links para Estudiantes -->
+      <ng-container *ngIf="userRole === 'Participant'">
+        <div class="nav-section"><span class="nav-text">Mis Estudios</span></div>
+        <a routerLink="/app/courses" routerLinkActive="active" class="nav-item" pTooltip="Mis Cursos" tooltipPosition="right">
+          <i class="pi pi-book"></i> <span class="nav-text">Mis Cursos</span>
+        </a>
+        <a routerLink="/app/certificates" routerLinkActive="active" class="nav-item" pTooltip="Certificados" tooltipPosition="right">
+          <i class="pi pi-id-card"></i> <span class="nav-text">Certificados</span>
+        </a>
+      </ng-container>
+
+      <!-- Links para Instructores -->
+      <ng-container *ngIf="userRole === 'Instructor' || userRole === 'Admin'">
+        <div class="nav-section"><span class="nav-text">Enseñanza</span></div>
+        <a routerLink="/app/instructor/dashboard" routerLinkActive="active" class="nav-item" pTooltip="Panel de Instructor" tooltipPosition="right">
+          <i class="pi pi-chart-line"></i> <span class="nav-text">Panel</span>
+        </a>
+        <a routerLink="/app/instructor/courses/new" routerLinkActive="active" class="nav-item" pTooltip="Crear Curso" tooltipPosition="right">
+          <i class="pi pi-plus-circle"></i> <span class="nav-text">Crear Curso</span>
+        </a>
+        <a routerLink="/app/instructor/live" routerLinkActive="active" class="nav-item" pTooltip="Eventos en Vivo" tooltipPosition="right">
+          <i class="pi pi-video"></i> <span class="nav-text">Eventos Live</span>
+        </a>
+      </ng-container>
+
+      <!-- Links para Administradores -->
+      <ng-container *ngIf="userRole === 'Admin'">
+        <div class="nav-section"><span class="nav-text">Administración</span></div>
+        <a routerLink="/app/admin/users" routerLinkActive="active" class="nav-item" pTooltip="Usuarios" tooltipPosition="right">
+          <i class="pi pi-users"></i> <span class="nav-text">Usuarios</span>
+        </a>
+        <a routerLink="/app/admin/memberships" routerLinkActive="active" class="nav-item" pTooltip="Pagos y Membresías" tooltipPosition="right">
+          <i class="pi pi-dollar"></i> <span class="nav-text">Pagos</span>
+        </a>
+        <a routerLink="/app/admin/reports" routerLinkActive="active" class="nav-item" pTooltip="Reportes Globales" tooltipPosition="right">
+          <i class="pi pi-chart-bar"></i> <span class="nav-text">Reportes</span>
+        </a>
+      </ng-container>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button class="logout-btn" (click)="logout()" pTooltip="Cerrar Sesión" tooltipPosition="right">
+        <i class="pi pi-sign-out"></i> <span class="nav-text">Salir</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- CONTENIDO CENTRAL -->
+  <main class="main-content">
+    <!-- TOPBAR (Udemy Style: Limpio, buscador prominente) -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="hamburger-btn" (click)="toggleSidebar()">
+          <i class="pi pi-bars"></i>
+        </button>
+        <div class="search-box d-desktop">
+          <i class="pi pi-search"></i>
+          <input type="text" placeholder="Busca cursos, certificaciones, mentores...">
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <button class="icon-btn" (click)="toggleRightPanel()" title="Eventos y Comunidad">
+          <i class="pi pi-comments"></i>
+          <span class="badge">Live</span>
+        </button>
+        <button class="icon-btn" (click)="showNotifications()">
+          <i class="pi pi-bell"></i>
+        </button>
+        <div class="user-menu">
+          <div class="avatar">{{ userName.charAt(0) }}</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ÁREA DINÁMICA -->
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+
+  <!-- PANEL DERECHO (Twitch Style: Comunidad/Live) -->
+  <aside class="right-panel" [class.open]="rightPanelOpen">
+    <div class="panel-header">
+      <h3>Comunidad & Live</h3>
+      <button class="close-btn" (click)="toggleRightPanel()">
+        <i class="pi pi-times"></i>
+      </button>
+    </div>
+    
+    <div class="panel-content">
+      <div class="live-event-card">
+        <div class="live-badge">LIVE</div>
+        <div class="event-info">
+          <h4>Q&A: Angular 18</h4>
+          <p>Con Joaquín</p>
+        </div>
+      </div>
+      
+      <div class="chat-section">
+        <div class="chat-header">Chat del Curso</div>
+        <div class="chat-messages">
+          <div class="msg" *ngFor="let msg of chatMessages">
+            <span class="author">{{ msg.author }}:</span> {{ msg.text }}
+          </div>
+        </div>
+        <div class="chat-input">
+          <input type="text" placeholder="Escribe algo..." [(ngModel)]="newChatMessage" (keyup.enter)="sendChatMessage()">
+          <button (click)="sendChatMessage()"><i class="pi pi-send"></i></button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Overlay para móviles -->
+  <div class="sidebar-overlay" *ngIf="sidebarOpen" (click)="toggleSidebar()"></div>
+</div>

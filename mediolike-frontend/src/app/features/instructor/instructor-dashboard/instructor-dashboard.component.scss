@@ -1,0 +1,97 @@
+$primary: #4f46e5;
+$bg-white: #ffffff;
+$text-dark: #1e293b;
+$text-light: #64748b;
+$border-light: #e2e8f0;
+
+.instructor-dashboard {
+  max-width: 1200px; margin: 0 auto; padding: 30px 20px; display: flex; flex-direction: column; gap: 30px;
+}
+
+.dashboard-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  h1 { margin: 0 0 5px; font-size: 2rem; color: $text-dark; }
+  p { margin: 0; color: $text-light; font-size: 1.1rem; }
+  
+  .header-actions {
+    display: flex; gap: 15px;
+    button {
+      padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 0.95rem; cursor: pointer;
+      display: flex; align-items: center; gap: 8px; transition: 0.2s;
+    }
+    .btn-primary { background: $primary; border: none; color: white; &:hover { opacity: 0.9; } }
+    .btn-secondary { background: white; border: 1px solid $border-light; color: $text-dark; &:hover { background: #f8fafc; } }
+  }
+}
+
+.metrics-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;
+}
+
+.metric-card {
+  background: $bg-white; border-radius: 12px; padding: 20px; border: 1px solid $border-light;
+  display: flex; align-items: center; gap: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+  
+  .metric-icon {
+    width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+  }
+  .metric-info {
+    h3 { margin: 0 0 5px; font-size: 1.5rem; color: $text-dark; }
+    p { margin: 0; color: $text-light; font-size: 0.9rem; font-weight: 500; }
+  }
+}
+
+.courses-section {
+  background: $bg-white; border-radius: 12px; border: 1px solid $border-light; padding: 20px;
+  
+  .section-header {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;
+    h2 { margin: 0; font-size: 1.2rem; color: $text-dark; }
+    
+    .search-box {
+      display: flex; align-items: center; gap: 10px; background: #f8fafc; border: 1px solid $border-light;
+      border-radius: 20px; padding: 8px 15px; width: 300px;
+      i { color: $text-light; }
+      input { border: none; background: transparent; outline: none; width: 100%; color: $text-dark; }
+    }
+  }
+
+  .courses-table {
+    width: 100%; overflow-x: auto;
+    
+    .table-header {
+      display: flex; padding: 15px 20px; background: #f8fafc; border-bottom: 1px solid $border-light;
+      border-radius: 8px 8px 0 0; font-weight: 600; font-size: 0.9rem; color: $text-light; text-transform: uppercase;
+    }
+    
+    .table-row {
+      display: flex; padding: 20px; border-bottom: 1px solid $border-light; align-items: center;
+      transition: 0.2s;
+      &:last-child { border-bottom: none; }
+      &:hover { background: #f8fafc; }
+    }
+    
+    .col-title { flex: 2; min-width: 200px; color: $text-dark; }
+    .col-status { flex: 1; min-width: 120px; }
+    .col-stats { flex: 1; min-width: 100px; color: $text-dark; font-weight: 500; }
+    .col-actions { flex: 1; min-width: 100px; display: flex; gap: 10px; justify-content: flex-end; }
+    
+    .badge {
+      padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 600;
+      &.badge-success { background: #dcfce7; color: #166534; }
+      &.badge-warning { background: #fef9c3; color: #854d0e; }
+    }
+    
+    .action-icon {
+      background: none; border: none; color: $text-light; font-size: 1.1rem; cursor: pointer; transition: 0.2s;
+      width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      &:hover { background: #e2e8f0; color: $primary; }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .courses-table { min-width: 800px; } /* Permite scroll horizontal */
+}
