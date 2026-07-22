@@ -1,26 +1,94 @@
-<div class="layout-wrapper flex flex-column min-h-screen surface-ground">
-  <!-- Navbar/Header -->
-  <header class="surface-card shadow-1 p-3 flex align-items-center justify-content-between">
-    <div class="flex align-items-center">
-      <h1 class="m-0 text-xl font-semibold text-primary">MedioLike - Administration</h1>
+<!-- Admin Layout -->
+<div *ngIf="showLayout" class="layout-wrapper dark-neon-bg" (window:mouseup)="onNavMouseUp()">
+
+  <!-- SPLASH SCREEN OVERLAY (Login) -->
+  <div *ngIf="showSplash" class="splash-overlay">
+    <div class="splash-content">
+      <div class="splash-logo-container">
+        <div class="splash-logo-glow"></div>
+        <div class="splash-ml-logo">
+          <span class="m-blue-splash">M</span><span class="l-orange-splash">L</span>
+        </div>
+      </div>
+      <h1 class="splash-title">¡Bienvenido <span>Admin</span>!</h1>
+      <p class="splash-subtitle">Iniciando plataforma MedioLike...</p>
+      <div class="splash-loader"></div>
     </div>
-    <nav class="flex gap-3">
-      <a routerLink="/users" routerLinkActive="text-primary font-bold"
-        class="text-700 hover:text-primary no-underline transition-colors transition-duration-150 cursor-pointer">Usuarios</a>
-      <a routerLink="/roles" routerLinkActive="text-primary font-bold"
-        class="text-700 hover:text-primary no-underline transition-colors transition-duration-150 cursor-pointer">Roles</a>
-      <a routerLink="/settings" routerLinkActive="text-primary font-bold"
-        class="text-700 hover:text-primary no-underline transition-colors transition-duration-150 cursor-pointer">Ajustes</a>
-    </nav>
-  </header>
+  </div>
 
-  <!-- Main Content -->
-  <main class="flex-grow-1 p-4">
-    <router-outlet></router-outlet>
-  </main>
+  <!-- SPLASH SCREEN OVERLAY (Logout) -->
+  <div *ngIf="showSplashLogout" class="splash-overlay splash-logout">
+    <div class="splash-content">
+      <div class="splash-logo-container">
+        <div class="splash-logo-glow logout-glow"></div>
+        <div class="splash-ml-logo">
+          <span class="m-blue-splash">M</span><span class="l-orange-splash">L</span>
+        </div>
+      </div>
+      <h1 class="splash-title">¡Hasta Luego <span>Admin</span>!</h1>
+      <p class="splash-subtitle">Cerrando sesión de manera segura...</p>
+      <div class="splash-loader"></div>
+    </div>
+  </div>
 
-  <!-- Footer -->
-  <footer class="surface-card p-3 text-center text-500 shadow-1 mt-auto">
-    MedioLike &copy; 2026. Módulo de Seguridad.
-  </footer>
+  <!-- MAIN DASHBOARD CONTENT -->
+  <div class="dashboard-content" [class.blur-while-splash]="showSplash || showSplashLogout">
+    <header class="glass-header-light">
+      <div class="header-left">
+        <div class="brand-ml-mini">
+          <span style="color: var(--brand-cyan); font-weight: 800;">M</span><span
+            style="color: var(--brand-orange); font-weight: 800;">L</span>
+        </div>
+        <h1 class="header-title-light text-xl ml-2">
+          Medio<span>Like</span>
+        </h1>
+        <span class="header-sep-light mx-3">/</span>
+        <span class="header-sub-light">Administración</span>
+      </div>
+
+      <!-- Liquid Glass Pill Navigation -->
+      <nav class="liquid-nav-pill">
+        <a routerLink="/users" routerLinkActive="nav-active-liquid" (mousedown)="onNavMouseDown($event, '/users')"
+          (mouseenter)="onNavMouseEnter('/users')" class="nav-item-liquid w-drag">
+          <div class="glass-bubble"></div>
+          <i class="pi pi-users"></i>
+          <span class="liquid-text">Usuarios</span>
+        </a>
+        <a routerLink="/roles" routerLinkActive="nav-active-liquid" (mousedown)="onNavMouseDown($event, '/roles')"
+          (mouseenter)="onNavMouseEnter('/roles')" class="nav-item-liquid w-drag">
+          <div class="glass-bubble"></div>
+          <i class="pi pi-id-card"></i>
+          <span class="liquid-text">Roles</span>
+        </a>
+        <a routerLink="/settings" routerLinkActive="nav-active-liquid" (mousedown)="onNavMouseDown($event, '/settings')"
+          (mouseenter)="onNavMouseEnter('/settings')" class="nav-item-liquid w-drag">
+          <div class="glass-bubble"></div>
+          <i class="pi pi-cog"></i>
+          <span class="liquid-text">Ajustes</span>
+        </a>
+        <div class="nav-divider-liquid"></div>
+        <a href="#" (click)="logout($event)" class="nav-item-liquid logout-liquid">
+          <div class="glass-bubble logout-bubble"></div>
+          <i class="pi pi-sign-out"></i>
+          <span>Salir</span>
+        </a>
+      </nav>
+    </header>
+
+    <main class="main-content">
+      <!-- The exact component loaded by the router (Users, Roles, Settings) -->
+      <div class="table-container-light fade-in-up">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+
+    <footer class="app-footer-light">
+      <span>Panel Administrativo MedioLike &copy; 2026.</span>
+    </footer>
+  </div>
+</div>
+
+<!-- Login Page -->
+<div *ngIf="!showLayout">
+  <router-outlet></router-outlet>
 </div>

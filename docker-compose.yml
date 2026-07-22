@@ -57,14 +57,14 @@ services:
   # Frontend (Angular) - Placeholder
   frontend:
     build:
-      context: ./frontend
+      context: ./mediolike-frontend
       dockerfile: Dockerfile
     container_name: mediolike_frontend
     restart: always
     ports:
       - "${FRONTEND_PORT:-4200}:4200"
     volumes:
-      - ./frontend:/app
+      - ./mediolike-frontend:/app
       - /app/node_modules
     networks:
       - mediolike_network

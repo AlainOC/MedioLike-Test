@@ -13,3 +13,4 @@ A continuación, se define conceptual y lógicamente para qué sirve cada tabla 
 ### 3. Tabla de Configuraciones (`settings`)
 - **¿Para qué sirve?** Actúa como las "Variables de Entorno Globales" manipulables sin necesidad de programación ni redespliegues del servidor.
 - **¿Cómo se usa?** Consiste en pares dinámicos de *Llave-Valor*. Si el director general decide alterar la "Comisión de Procesamiento de Pago", un administrador entra a este listado y cambia la llave `DEFAULT_PAYMENT_FEE` de "0.5" a "0.8". Al guardarlo, todo el código BackEnd de la empresa automáticamente respetará esa nueva regla de cálculos, proveyendo agilidad extrema sin afectar servidores activos.
+si 

@@ -19,7 +19,7 @@ describe('SettingService Unit Test Suite', () => {
     });
 
     test('should enforce creation with required fields', async () => {
-        await expect(settingService.createSetting({ key: '', value: 'test', valueType: 'string', isPublic: true }))
+        await expect(settingService.createSetting({ key: '', value: 'test', valueType: 'string', description: '' }))
             .rejects
             .toThrow("Key and value are required to create a setting");
     });
@@ -27,10 +27,10 @@ describe('SettingService Unit Test Suite', () => {
     test('should prevent duplicate configuration keys from being inserted', async () => {
         mockSettingRepository.findByKey.mockResolvedValueOnce({
             id: 's1', key: 'TIMEZONE', value: 'UTC', valueType: 'string',
-            description: '', isPublic: false, updatedAt: new Date()
+            description: '', createdAt: new Date(), updatedAt: new Date()
         });
 
-        await expect(settingService.createSetting({ key: 'TIMEZONE', value: 'EST', valueType: 'string', isPublic: true }))
+        await expect(settingService.createSetting({ key: 'TIMEZONE', value: 'EST', valueType: 'string', description: '' }))
             .rejects
             .toThrow("Setting key 'TIMEZONE' already exists");
     });

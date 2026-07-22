@@ -1,0 +1,128 @@
+
+> mediolike-backend@1.0.0 build
+> tsc
+
+file:///app/node_modules/typescript/lib/getExePath.js:53
+            throw new Error("Unable to resolve " + platformPackageName + ". Either your platform is unsupported, or you are missing the package on disk.");
+                  ^
+
+Error: Unable to resolve @typescript/typescript-linux-x64. Either your platform is unsupported, or you are missing the package on disk.
+    at getExePath (file:///app/node_modules/typescript/lib/getExePath.js:53:19)
+    at file:///app/node_modules/typescript/lib/tsc.js:6:13
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v20.20.2
+
+> mediolike-backend@1.0.0 build
+> tsc
+
+file:///app/node_modules/typescript/lib/getExePath.js:53
+            throw new Error("Unable to resolve " + platformPackageName + ". Either your platform is unsupported, or you are missing the package on disk.");
+                  ^
+
+Error: Unable to resolve @typescript/typescript-linux-x64. Either your platform is unsupported, or you are missing the package on disk.
+    at getExePath (file:///app/node_modules/typescript/lib/getExePath.js:53:19)
+    at file:///app/node_modules/typescript/lib/tsc.js:6:13
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v20.20.2
+
+> mediolike-backend@1.0.0 build
+> tsc
+
+file:///app/node_modules/typescript/lib/getExePath.js:53
+            throw new Error("Unable to resolve " + platformPackageName + ". Either your platform is unsupported, or you are missing the package on disk.");
+                  ^
+
+Error: Unable to resolve @typescript/typescript-linux-x64. Either your platform is unsupported, or you are missing the package on disk.
+    at getExePath (file:///app/node_modules/typescript/lib/getExePath.js:53:19)
+    at file:///app/node_modules/typescript/lib/tsc.js:6:13
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v20.20.2
+
+> mediolike-backend@1.0.0 build
+> tsc
+
+file:///app/node_modules/typescript/lib/getExePath.js:53
+            throw new Error("Unable to resolve " + platformPackageName + ". Either your platform is unsupported, or you are missing the package on disk.");
+                  ^
+
+Error: Unable to resolve @typescript/typescript-linux-x64. Either your platform is unsupported, or you are missing the package on disk.
+    at getExePath (file:///app/node_modules/typescript/lib/getExePath.js:53:19)
+    at file:///app/node_modules/typescript/lib/tsc.js:6:13
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v20.20.2
+
+> mediolike-backend@1.0.0 build
+> tsc
+
+file:///app/node_modules/typescript/lib/getExePath.js:53
+            throw new Error("Unable to resolve " + platformPackageName + ". Either your platform is unsupported, or you are missing the package on disk.");
+                  ^
+
+Error: Unable to resolve @typescript/typescript-linux-x64. Either your platform is unsupported, or you are missing the package on disk.
+    at getExePath (file:///app/node_modules/typescript/lib/getExePath.js:53:19)
+    at file:///app/node_modules/typescript/lib/tsc.js:6:13
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v20.20.2
+
+> mediolike-backend@1.0.0 build
+> tsc
+
+file:///app/node_modules/typescript/lib/getExePath.js:53
+            throw new Error("Unable to resolve " + platformPackageName + ". Either your platform is unsupported, or you are missing the package on disk.");
+                  ^
+
+Error: Unable to resolve @typescript/typescript-linux-x64. Either your platform is unsupported, or you are missing the package on disk.
+    at getExePath (file:///app/node_modules/typescript/lib/getExePath.js:53:19)
+    at file:///app/node_modules/typescript/lib/tsc.js:6:13
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v20.20.2
+
+> mediolike-backend@1.0.0 build
+> tsc
+
+file:///app/node_modules/typescript/lib/getExePath.js:53
+            throw new Error("Unable to resolve " + platformPackageName + ". Either your platform is unsupported, or you are missing the package on disk.");
+                  ^
+
+Error: Unable to resolve @typescript/typescript-linux-x64. Either your platform is unsupported, or you are missing the package on disk.
+    at getExePath (file:///app/node_modules/typescript/lib/getExePath.js:53:19)
+    at file:///app/node_modules/typescript/lib/tsc.js:6:13
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v20.20.2
+
+> mediolike-backend@1.0.0 build
+> tsc
+
+file:///app/node_modules/typescript/lib/getExePath.js:53
+            throw new Error("Unable to resolve " + platformPackageName + ". Either your platform is unsupported, or you are missing the package on disk.");
+                  ^
+
+Error: Unable to resolve @typescript/typescript-linux-x64. Either your platform is unsupported, or you are missing the package on disk.
+    at getExePath (file:///app/node_modules/typescript/lib/getExePath.js:53:19)
+    at file:///app/node_modules/typescript/lib/tsc.js:6:13
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v20.20.2

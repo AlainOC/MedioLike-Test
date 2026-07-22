@@ -1,0 +1,320 @@
+
+> mediolike-backend@1.0.0 build
+> tsc
+
+src/application/services/role.service.spec.ts(5,1): error TS2582: Cannot find name 'describe'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/role.service.spec.ts(6,29): error TS2503: Cannot find namespace 'jest'.
+src/application/services/role.service.spec.ts(9,5): error TS2304: Cannot find name 'beforeEach'.
+src/application/services/role.service.spec.ts(11,23): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(12,25): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(13,22): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(14,21): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(15,21): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(16,21): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(17,32): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(18,29): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(19,14): error TS2503: Cannot find namespace 'jest'.
+src/application/services/role.service.spec.ts(24,5): error TS2582: Cannot find name 'test'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/role.service.spec.ts(29,9): error TS2304: Cannot find name 'expect'.
+src/application/services/role.service.spec.ts(30,9): error TS2304: Cannot find name 'expect'.
+src/application/services/role.service.spec.ts(33,5): error TS2582: Cannot find name 'test'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/role.service.spec.ts(38,15): error TS2304: Cannot find name 'expect'.
+src/application/services/role.service.spec.ts(42,9): error TS2304: Cannot find name 'expect'.
+src/application/services/setting.service.spec.ts(5,1): error TS2582: Cannot find name 'describe'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/setting.service.spec.ts(6,32): error TS2503: Cannot find namespace 'jest'.
+src/application/services/setting.service.spec.ts(9,5): error TS2304: Cannot find name 'beforeEach'.
+src/application/services/setting.service.spec.ts(11,24): error TS2304: Cannot find name 'jest'.
+src/application/services/setting.service.spec.ts(12,22): error TS2304: Cannot find name 'jest'.
+src/application/services/setting.service.spec.ts(13,21): error TS2304: Cannot find name 'jest'.
+src/application/services/setting.service.spec.ts(14,21): error TS2304: Cannot find name 'jest'.
+src/application/services/setting.service.spec.ts(15,21): error TS2304: Cannot find name 'jest'.
+src/application/services/setting.service.spec.ts(16,14): error TS2503: Cannot find namespace 'jest'.
+src/application/services/setting.service.spec.ts(21,5): error TS2582: Cannot find name 'test'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/setting.service.spec.ts(22,15): error TS2304: Cannot find name 'expect'.
+src/application/services/setting.service.spec.ts(22,98): error TS2353: Object literal may only specify known properties, and 'isPublic' does not exist in type 'Omit<Setting, "id" | "createdAt" | "updatedAt">'.
+src/application/services/setting.service.spec.ts(27,5): error TS2582: Cannot find name 'test'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/setting.service.spec.ts(33,15): error TS2304: Cannot find name 'expect'.
+src/application/services/setting.service.spec.ts(33,105): error TS2353: Object literal may only specify known properties, and 'isPublic' does not exist in type 'Omit<Setting, "id" | "createdAt" | "updatedAt">'.
+src/application/services/user.service.spec.ts(5,1): error TS2582: Cannot find name 'describe'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/user.service.spec.ts(6,29): error TS2503: Cannot find namespace 'jest'.
+src/application/services/user.service.spec.ts(9,5): error TS2304: Cannot find name 'beforeEach'.
+src/application/services/user.service.spec.ts(11,23): error TS2304: Cannot find name 'jest'.
+src/application/services/user.service.spec.ts(12,26): error TS2304: Cannot find name 'jest'.
+src/application/services/user.service.spec.ts(13,22): error TS2304: Cannot find name 'jest'.
+src/application/services/user.service.spec.ts(14,21): error TS2304: Cannot find name 'jest'.
+src/application/services/user.service.spec.ts(15,21): error TS2304: Cannot find name 'jest'.
+src/application/services/user.service.spec.ts(16,21): error TS2304: Cannot find name 'jest'.
+src/application/services/user.service.spec.ts(17,14): error TS2503: Cannot find namespace 'jest'.
+src/application/services/user.service.spec.ts(22,5): error TS2582: Cannot find name 'test'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/user.service.spec.ts(23,36): error TS2739: Type '{ id: string; email: string; passwordHash: string; status: UserStatus.ACTIVE; roleId: string; createdAt: Date; updatedAt: Date; }' is missing the following properties from type 'User': emailVerifiedAt, lastLoginAt, deletedAt
+src/application/services/user.service.spec.ts(30,9): error TS2304: Cannot find name 'expect'.
+src/application/services/user.service.spec.ts(31,9): error TS2304: Cannot find name 'expect'.
+src/application/services/user.service.spec.ts(34,5): error TS2582: Cannot find name 'test'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/user.service.spec.ts(40,15): error TS2304: Cannot find name 'expect'.
+src/application/services/user.service.spec.ts(40,45): error TS2345: Argument of type '{ email: string; passwordHash: string; roleId: string; }' is not assignable to parameter of type 'Omit<User, "id" | "createdAt" | "updatedAt" | "deletedAt">'.
+  Type '{ email: string; passwordHash: string; roleId: string; }' is missing the following properties from type 'Omit<User, "id" | "createdAt" | "updatedAt" | "deletedAt">': status, emailVerifiedAt, lastLoginAt
+src/application/services/user.service.spec.ts(44,9): error TS2304: Cannot find name 'expect'.
+src/docs/swagger.ts(1,26): error TS2307: Cannot find module 'swagger-jsdoc' or its corresponding type declarations.
+src/docs/swagger.ts(2,23): error TS2307: Cannot find module 'swagger-ui-express' or its corresponding type declarations.
+src/infrastructure/database/postgres.ts(1,22): error TS2307: Cannot find module 'pg' or its corresponding type declarations.
+src/infrastructure/database/postgres.ts(2,25): error TS2307: Cannot find module 'dotenv' or its corresponding type declarations.
+src/infrastructure/repositories/postgres-role.repository.ts(1,22): error TS2307: Cannot find module 'pg' or its corresponding type declarations.
+src/infrastructure/repositories/postgres-role.repository.ts(74,32): error TS7006: Parameter 'row' implicitly has an 'any' type.
+src/infrastructure/repositories/postgres-setting.repository.ts(1,22): error TS2307: Cannot find module 'pg' or its corresponding type declarations.
+src/infrastructure/repositories/postgres-user.repository.ts(1,22): error TS2307: Cannot find module 'pg' or its corresponding type declarations.
+
+> mediolike-backend@1.0.0 build
+> tsc
+
+src/application/services/role.service.spec.ts(5,1): error TS2582: Cannot find name 'describe'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/role.service.spec.ts(6,29): error TS2503: Cannot find namespace 'jest'.
+src/application/services/role.service.spec.ts(9,5): error TS2304: Cannot find name 'beforeEach'.
+src/application/services/role.service.spec.ts(11,23): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(12,25): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(13,22): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(14,21): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(15,21): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(16,21): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(17,32): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(18,29): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(19,14): error TS2503: Cannot find namespace 'jest'.
+src/application/services/role.service.spec.ts(24,5): error TS2582: Cannot find name 'test'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/role.service.spec.ts(29,9): error TS2304: Cannot find name 'expect'.
+src/application/services/role.service.spec.ts(30,9): error TS2304: Cannot find name 'expect'.
+src/application/services/role.service.spec.ts(33,5): error TS2582: Cannot find name 'test'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/role.service.spec.ts(38,15): error TS2304: Cannot find name 'expect'.
+src/application/services/role.service.spec.ts(42,9): error TS2304: Cannot find name 'expect'.
+src/application/services/setting.service.spec.ts(5,1): error TS2582: Cannot find name 'describe'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/setting.service.spec.ts(6,32): error TS2503: Cannot find namespace 'jest'.
+src/application/services/setting.service.spec.ts(9,5): error TS2304: Cannot find name 'beforeEach'.
+src/application/services/setting.service.spec.ts(11,24): error TS2304: Cannot find name 'jest'.
+src/application/services/setting.service.spec.ts(12,22): error TS2304: Cannot find name 'jest'.
+src/application/services/setting.service.spec.ts(13,21): error TS2304: Cannot find name 'jest'.
+src/application/services/setting.service.spec.ts(14,21): error TS2304: Cannot find name 'jest'.
+src/application/services/setting.service.spec.ts(15,21): error TS2304: Cannot find name 'jest'.
+src/application/services/setting.service.spec.ts(16,14): error TS2503: Cannot find namespace 'jest'.
+src/application/services/setting.service.spec.ts(21,5): error TS2582: Cannot find name 'test'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/setting.service.spec.ts(22,15): error TS2304: Cannot find name 'expect'.
+src/application/services/setting.service.spec.ts(22,98): error TS2353: Object literal may only specify known properties, and 'isPublic' does not exist in type 'Omit<Setting, "id" | "createdAt" | "updatedAt">'.
+src/application/services/setting.service.spec.ts(27,5): error TS2582: Cannot find name 'test'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/setting.service.spec.ts(33,15): error TS2304: Cannot find name 'expect'.
+src/application/services/setting.service.spec.ts(33,105): error TS2353: Object literal may only specify known properties, and 'isPublic' does not exist in type 'Omit<Setting, "id" | "createdAt" | "updatedAt">'.
+src/application/services/user.service.spec.ts(5,1): error TS2582: Cannot find name 'describe'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/user.service.spec.ts(6,29): error TS2503: Cannot find namespace 'jest'.
+src/application/services/user.service.spec.ts(9,5): error TS2304: Cannot find name 'beforeEach'.
+src/application/services/user.service.spec.ts(11,23): error TS2304: Cannot find name 'jest'.
+src/application/services/user.service.spec.ts(12,26): error TS2304: Cannot find name 'jest'.
+src/application/services/user.service.spec.ts(13,22): error TS2304: Cannot find name 'jest'.
+src/application/services/user.service.spec.ts(14,21): error TS2304: Cannot find name 'jest'.
+src/application/services/user.service.spec.ts(15,21): error TS2304: Cannot find name 'jest'.
+src/application/services/user.service.spec.ts(16,21): error TS2304: Cannot find name 'jest'.
+src/application/services/user.service.spec.ts(17,14): error TS2503: Cannot find namespace 'jest'.
+src/application/services/user.service.spec.ts(22,5): error TS2582: Cannot find name 'test'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/user.service.spec.ts(23,36): error TS2739: Type '{ id: string; email: string; passwordHash: string; status: UserStatus.ACTIVE; roleId: string; createdAt: Date; updatedAt: Date; }' is missing the following properties from type 'User': emailVerifiedAt, lastLoginAt, deletedAt
+src/application/services/user.service.spec.ts(30,9): error TS2304: Cannot find name 'expect'.
+src/application/services/user.service.spec.ts(31,9): error TS2304: Cannot find name 'expect'.
+src/application/services/user.service.spec.ts(34,5): error TS2582: Cannot find name 'test'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/user.service.spec.ts(40,15): error TS2304: Cannot find name 'expect'.
+src/application/services/user.service.spec.ts(40,45): error TS2345: Argument of type '{ email: string; passwordHash: string; roleId: string; }' is not assignable to parameter of type 'Omit<User, "id" | "createdAt" | "updatedAt" | "deletedAt">'.
+  Type '{ email: string; passwordHash: string; roleId: string; }' is missing the following properties from type 'Omit<User, "id" | "createdAt" | "updatedAt" | "deletedAt">': status, emailVerifiedAt, lastLoginAt
+src/application/services/user.service.spec.ts(44,9): error TS2304: Cannot find name 'expect'.
+src/docs/swagger.ts(1,26): error TS2307: Cannot find module 'swagger-jsdoc' or its corresponding type declarations.
+src/docs/swagger.ts(2,23): error TS2307: Cannot find module 'swagger-ui-express' or its corresponding type declarations.
+src/infrastructure/database/postgres.ts(1,22): error TS2307: Cannot find module 'pg' or its corresponding type declarations.
+src/infrastructure/database/postgres.ts(2,25): error TS2307: Cannot find module 'dotenv' or its corresponding type declarations.
+src/infrastructure/repositories/postgres-role.repository.ts(1,22): error TS2307: Cannot find module 'pg' or its corresponding type declarations.
+src/infrastructure/repositories/postgres-role.repository.ts(74,32): error TS7006: Parameter 'row' implicitly has an 'any' type.
+src/infrastructure/repositories/postgres-setting.repository.ts(1,22): error TS2307: Cannot find module 'pg' or its corresponding type declarations.
+src/infrastructure/repositories/postgres-user.repository.ts(1,22): error TS2307: Cannot find module 'pg' or its corresponding type declarations.
+
+> mediolike-backend@1.0.0 build
+> tsc
+
+src/application/services/role.service.spec.ts(5,1): error TS2582: Cannot find name 'describe'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/role.service.spec.ts(6,29): error TS2503: Cannot find namespace 'jest'.
+src/application/services/role.service.spec.ts(9,5): error TS2304: Cannot find name 'beforeEach'.
+src/application/services/role.service.spec.ts(11,23): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(12,25): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(13,22): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(14,21): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(15,21): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(16,21): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(17,32): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(18,29): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(19,14): error TS2503: Cannot find namespace 'jest'.
+src/application/services/role.service.spec.ts(24,5): error TS2582: Cannot find name 'test'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/role.service.spec.ts(29,9): error TS2304: Cannot find name 'expect'.
+src/application/services/role.service.spec.ts(30,9): error TS2304: Cannot find name 'expect'.
+src/application/services/role.service.spec.ts(33,5): error TS2582: Cannot find name 'test'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/role.service.spec.ts(38,15): error TS2304: Cannot find name 'expect'.
+src/application/services/role.service.spec.ts(42,9): error TS2304: Cannot find name 'expect'.
+src/application/services/setting.service.spec.ts(5,1): error TS2582: Cannot find name 'describe'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/setting.service.spec.ts(6,32): error TS2503: Cannot find namespace 'jest'.
+src/application/services/setting.service.spec.ts(9,5): error TS2304: Cannot find name 'beforeEach'.
+src/application/services/setting.service.spec.ts(11,24): error TS2304: Cannot find name 'jest'.
+src/application/services/setting.service.spec.ts(12,22): error TS2304: Cannot find name 'jest'.
+src/application/services/setting.service.spec.ts(13,21): error TS2304: Cannot find name 'jest'.
+src/application/services/setting.service.spec.ts(14,21): error TS2304: Cannot find name 'jest'.
+src/application/services/setting.service.spec.ts(15,21): error TS2304: Cannot find name 'jest'.
+src/application/services/setting.service.spec.ts(16,14): error TS2503: Cannot find namespace 'jest'.
+src/application/services/setting.service.spec.ts(21,5): error TS2582: Cannot find name 'test'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/setting.service.spec.ts(22,15): error TS2304: Cannot find name 'expect'.
+src/application/services/setting.service.spec.ts(22,98): error TS2353: Object literal may only specify known properties, and 'isPublic' does not exist in type 'Omit<Setting, "id" | "createdAt" | "updatedAt">'.
+src/application/services/setting.service.spec.ts(27,5): error TS2582: Cannot find name 'test'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/setting.service.spec.ts(33,15): error TS2304: Cannot find name 'expect'.
+src/application/services/setting.service.spec.ts(33,105): error TS2353: Object literal may only specify known properties, and 'isPublic' does not exist in type 'Omit<Setting, "id" | "createdAt" | "updatedAt">'.
+src/application/services/user.service.spec.ts(5,1): error TS2582: Cannot find name 'describe'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/user.service.spec.ts(6,29): error TS2503: Cannot find namespace 'jest'.
+src/application/services/user.service.spec.ts(9,5): error TS2304: Cannot find name 'beforeEach'.
+src/application/services/user.service.spec.ts(11,23): error TS2304: Cannot find name 'jest'.
+src/application/services/user.service.spec.ts(12,26): error TS2304: Cannot find name 'jest'.
+src/application/services/user.service.spec.ts(13,22): error TS2304: Cannot find name 'jest'.
+src/application/services/user.service.spec.ts(14,21): error TS2304: Cannot find name 'jest'.
+src/application/services/user.service.spec.ts(15,21): error TS2304: Cannot find name 'jest'.
+src/application/services/user.service.spec.ts(16,21): error TS2304: Cannot find name 'jest'.
+src/application/services/user.service.spec.ts(17,14): error TS2503: Cannot find namespace 'jest'.
+src/application/services/user.service.spec.ts(22,5): error TS2582: Cannot find name 'test'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/user.service.spec.ts(23,36): error TS2739: Type '{ id: string; email: string; passwordHash: string; status: UserStatus.ACTIVE; roleId: string; createdAt: Date; updatedAt: Date; }' is missing the following properties from type 'User': emailVerifiedAt, lastLoginAt, deletedAt
+src/application/services/user.service.spec.ts(30,9): error TS2304: Cannot find name 'expect'.
+src/application/services/user.service.spec.ts(31,9): error TS2304: Cannot find name 'expect'.
+src/application/services/user.service.spec.ts(34,5): error TS2582: Cannot find name 'test'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/user.service.spec.ts(40,15): error TS2304: Cannot find name 'expect'.
+src/application/services/user.service.spec.ts(40,45): error TS2345: Argument of type '{ email: string; passwordHash: string; roleId: string; }' is not assignable to parameter of type 'Omit<User, "id" | "createdAt" | "updatedAt" | "deletedAt">'.
+  Type '{ email: string; passwordHash: string; roleId: string; }' is missing the following properties from type 'Omit<User, "id" | "createdAt" | "updatedAt" | "deletedAt">': status, emailVerifiedAt, lastLoginAt
+src/application/services/user.service.spec.ts(44,9): error TS2304: Cannot find name 'expect'.
+src/docs/swagger.ts(1,26): error TS2307: Cannot find module 'swagger-jsdoc' or its corresponding type declarations.
+src/docs/swagger.ts(2,23): error TS2307: Cannot find module 'swagger-ui-express' or its corresponding type declarations.
+src/infrastructure/database/postgres.ts(1,22): error TS2307: Cannot find module 'pg' or its corresponding type declarations.
+src/infrastructure/database/postgres.ts(2,25): error TS2307: Cannot find module 'dotenv' or its corresponding type declarations.
+src/infrastructure/repositories/postgres-role.repository.ts(1,22): error TS2307: Cannot find module 'pg' or its corresponding type declarations.
+src/infrastructure/repositories/postgres-role.repository.ts(74,32): error TS7006: Parameter 'row' implicitly has an 'any' type.
+src/infrastructure/repositories/postgres-setting.repository.ts(1,22): error TS2307: Cannot find module 'pg' or its corresponding type declarations.
+src/infrastructure/repositories/postgres-user.repository.ts(1,22): error TS2307: Cannot find module 'pg' or its corresponding type declarations.
+
+> mediolike-backend@1.0.0 build
+> tsc
+
+src/application/services/role.service.spec.ts(5,1): error TS2582: Cannot find name 'describe'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/role.service.spec.ts(6,29): error TS2503: Cannot find namespace 'jest'.
+src/application/services/role.service.spec.ts(9,5): error TS2304: Cannot find name 'beforeEach'.
+src/application/services/role.service.spec.ts(11,23): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(12,25): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(13,22): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(14,21): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(15,21): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(16,21): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(17,32): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(18,29): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(19,14): error TS2503: Cannot find namespace 'jest'.
+src/application/services/role.service.spec.ts(24,5): error TS2582: Cannot find name 'test'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/role.service.spec.ts(29,9): error TS2304: Cannot find name 'expect'.
+src/application/services/role.service.spec.ts(30,9): error TS2304: Cannot find name 'expect'.
+src/application/services/role.service.spec.ts(33,5): error TS2582: Cannot find name 'test'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/role.service.spec.ts(38,15): error TS2304: Cannot find name 'expect'.
+src/application/services/role.service.spec.ts(42,9): error TS2304: Cannot find name 'expect'.
+src/application/services/setting.service.spec.ts(5,1): error TS2582: Cannot find name 'describe'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/setting.service.spec.ts(6,32): error TS2503: Cannot find namespace 'jest'.
+src/application/services/setting.service.spec.ts(9,5): error TS2304: Cannot find name 'beforeEach'.
+src/application/services/setting.service.spec.ts(11,24): error TS2304: Cannot find name 'jest'.
+src/application/services/setting.service.spec.ts(12,22): error TS2304: Cannot find name 'jest'.
+src/application/services/setting.service.spec.ts(13,21): error TS2304: Cannot find name 'jest'.
+src/application/services/setting.service.spec.ts(14,21): error TS2304: Cannot find name 'jest'.
+src/application/services/setting.service.spec.ts(15,21): error TS2304: Cannot find name 'jest'.
+src/application/services/setting.service.spec.ts(16,14): error TS2503: Cannot find namespace 'jest'.
+src/application/services/setting.service.spec.ts(21,5): error TS2582: Cannot find name 'test'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/setting.service.spec.ts(22,15): error TS2304: Cannot find name 'expect'.
+src/application/services/setting.service.spec.ts(22,98): error TS2353: Object literal may only specify known properties, and 'isPublic' does not exist in type 'Omit<Setting, "id" | "createdAt" | "updatedAt">'.
+src/application/services/setting.service.spec.ts(27,5): error TS2582: Cannot find name 'test'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/setting.service.spec.ts(33,15): error TS2304: Cannot find name 'expect'.
+src/application/services/setting.service.spec.ts(33,105): error TS2353: Object literal may only specify known properties, and 'isPublic' does not exist in type 'Omit<Setting, "id" | "createdAt" | "updatedAt">'.
+src/application/services/user.service.spec.ts(5,1): error TS2582: Cannot find name 'describe'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/user.service.spec.ts(6,29): error TS2503: Cannot find namespace 'jest'.
+src/application/services/user.service.spec.ts(9,5): error TS2304: Cannot find name 'beforeEach'.
+src/application/services/user.service.spec.ts(11,23): error TS2304: Cannot find name 'jest'.
+src/application/services/user.service.spec.ts(12,26): error TS2304: Cannot find name 'jest'.
+src/application/services/user.service.spec.ts(13,22): error TS2304: Cannot find name 'jest'.
+src/application/services/user.service.spec.ts(14,21): error TS2304: Cannot find name 'jest'.
+src/application/services/user.service.spec.ts(15,21): error TS2304: Cannot find name 'jest'.
+src/application/services/user.service.spec.ts(16,21): error TS2304: Cannot find name 'jest'.
+src/application/services/user.service.spec.ts(17,14): error TS2503: Cannot find namespace 'jest'.
+src/application/services/user.service.spec.ts(22,5): error TS2582: Cannot find name 'test'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/user.service.spec.ts(23,36): error TS2739: Type '{ id: string; email: string; passwordHash: string; status: UserStatus.ACTIVE; roleId: string; createdAt: Date; updatedAt: Date; }' is missing the following properties from type 'User': emailVerifiedAt, lastLoginAt, deletedAt
+src/application/services/user.service.spec.ts(30,9): error TS2304: Cannot find name 'expect'.
+src/application/services/user.service.spec.ts(31,9): error TS2304: Cannot find name 'expect'.
+src/application/services/user.service.spec.ts(34,5): error TS2582: Cannot find name 'test'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/user.service.spec.ts(40,15): error TS2304: Cannot find name 'expect'.
+src/application/services/user.service.spec.ts(40,45): error TS2345: Argument of type '{ email: string; passwordHash: string; roleId: string; }' is not assignable to parameter of type 'Omit<User, "id" | "createdAt" | "updatedAt" | "deletedAt">'.
+  Type '{ email: string; passwordHash: string; roleId: string; }' is missing the following properties from type 'Omit<User, "id" | "createdAt" | "updatedAt" | "deletedAt">': status, emailVerifiedAt, lastLoginAt
+src/application/services/user.service.spec.ts(44,9): error TS2304: Cannot find name 'expect'.
+src/docs/swagger.ts(1,26): error TS2307: Cannot find module 'swagger-jsdoc' or its corresponding type declarations.
+src/docs/swagger.ts(2,23): error TS2307: Cannot find module 'swagger-ui-express' or its corresponding type declarations.
+src/infrastructure/database/postgres.ts(1,22): error TS2307: Cannot find module 'pg' or its corresponding type declarations.
+src/infrastructure/database/postgres.ts(2,25): error TS2307: Cannot find module 'dotenv' or its corresponding type declarations.
+src/infrastructure/repositories/postgres-role.repository.ts(1,22): error TS2307: Cannot find module 'pg' or its corresponding type declarations.
+src/infrastructure/repositories/postgres-role.repository.ts(74,32): error TS7006: Parameter 'row' implicitly has an 'any' type.
+src/infrastructure/repositories/postgres-setting.repository.ts(1,22): error TS2307: Cannot find module 'pg' or its corresponding type declarations.
+src/infrastructure/repositories/postgres-user.repository.ts(1,22): error TS2307: Cannot find module 'pg' or its corresponding type declarations.
+
+> mediolike-backend@1.0.0 build
+> tsc
+
+src/application/services/role.service.spec.ts(5,1): error TS2582: Cannot find name 'describe'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/role.service.spec.ts(6,29): error TS2503: Cannot find namespace 'jest'.
+src/application/services/role.service.spec.ts(9,5): error TS2304: Cannot find name 'beforeEach'.
+src/application/services/role.service.spec.ts(11,23): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(12,25): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(13,22): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(14,21): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(15,21): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(16,21): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(17,32): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(18,29): error TS2304: Cannot find name 'jest'.
+src/application/services/role.service.spec.ts(19,14): error TS2503: Cannot find namespace 'jest'.
+src/application/services/role.service.spec.ts(24,5): error TS2582: Cannot find name 'test'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/role.service.spec.ts(29,9): error TS2304: Cannot find name 'expect'.
+src/application/services/role.service.spec.ts(30,9): error TS2304: Cannot find name 'expect'.
+src/application/services/role.service.spec.ts(33,5): error TS2582: Cannot find name 'test'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/role.service.spec.ts(38,15): error TS2304: Cannot find name 'expect'.
+src/application/services/role.service.spec.ts(42,9): error TS2304: Cannot find name 'expect'.
+src/application/services/setting.service.spec.ts(5,1): error TS2582: Cannot find name 'describe'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/setting.service.spec.ts(6,32): error TS2503: Cannot find namespace 'jest'.
+src/application/services/setting.service.spec.ts(9,5): error TS2304: Cannot find name 'beforeEach'.
+src/application/services/setting.service.spec.ts(11,24): error TS2304: Cannot find name 'jest'.
+src/application/services/setting.service.spec.ts(12,22): error TS2304: Cannot find name 'jest'.
+src/application/services/setting.service.spec.ts(13,21): error TS2304: Cannot find name 'jest'.
+src/application/services/setting.service.spec.ts(14,21): error TS2304: Cannot find name 'jest'.
+src/application/services/setting.service.spec.ts(15,21): error TS2304: Cannot find name 'jest'.
+src/application/services/setting.service.spec.ts(16,14): error TS2503: Cannot find namespace 'jest'.
+src/application/services/setting.service.spec.ts(21,5): error TS2582: Cannot find name 'test'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/setting.service.spec.ts(22,15): error TS2304: Cannot find name 'expect'.
+src/application/services/setting.service.spec.ts(22,98): error TS2353: Object literal may only specify known properties, and 'isPublic' does not exist in type 'Omit<Setting, "id" | "createdAt" | "updatedAt">'.
+src/application/services/setting.service.spec.ts(27,5): error TS2582: Cannot find name 'test'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/setting.service.spec.ts(33,15): error TS2304: Cannot find name 'expect'.
+src/application/services/setting.service.spec.ts(33,105): error TS2353: Object literal may only specify known properties, and 'isPublic' does not exist in type 'Omit<Setting, "id" | "createdAt" | "updatedAt">'.
+src/application/services/user.service.spec.ts(5,1): error TS2582: Cannot find name 'describe'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/user.service.spec.ts(6,29): error TS2503: Cannot find namespace 'jest'.
+src/application/services/user.service.spec.ts(9,5): error TS2304: Cannot find name 'beforeEach'.
+src/application/services/user.service.spec.ts(11,23): error TS2304: Cannot find name 'jest'.
+src/application/services/user.service.spec.ts(12,26): error TS2304: Cannot find name 'jest'.
+src/application/services/user.service.spec.ts(13,22): error TS2304: Cannot find name 'jest'.
+src/application/services/user.service.spec.ts(14,21): error TS2304: Cannot find name 'jest'.
+src/application/services/user.service.spec.ts(15,21): error TS2304: Cannot find name 'jest'.
+src/application/services/user.service.spec.ts(16,21): error TS2304: Cannot find name 'jest'.
+src/application/services/user.service.spec.ts(17,14): error TS2503: Cannot find namespace 'jest'.
+src/application/services/user.service.spec.ts(22,5): error TS2582: Cannot find name 'test'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/user.service.spec.ts(23,36): error TS2739: Type '{ id: string; email: string; passwordHash: string; status: UserStatus.ACTIVE; roleId: string; createdAt: Date; updatedAt: Date; }' is missing the following properties from type 'User': emailVerifiedAt, lastLoginAt, deletedAt
+src/application/services/user.service.spec.ts(30,9): error TS2304: Cannot find name 'expect'.
+src/application/services/user.service.spec.ts(31,9): error TS2304: Cannot find name 'expect'.
+src/application/services/user.service.spec.ts(34,5): error TS2582: Cannot find name 'test'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+src/application/services/user.service.spec.ts(40,15): error TS2304: Cannot find name 'expect'.
+src/application/services/user.service.spec.ts(40,45): error TS2345: Argument of type '{ email: string; passwordHash: string; roleId: string; }' is not assignable to parameter of type 'Omit<User, "id" | "createdAt" | "updatedAt" | "deletedAt">'.
+  Type '{ email: string; passwordHash: string; roleId: string; }' is missing the following properties from type 'Omit<User, "id" | "createdAt" | "updatedAt" | "deletedAt">': status, emailVerifiedAt, lastLoginAt
+src/application/services/user.service.spec.ts(44,9): error TS2304: Cannot find name 'expect'.
+src/docs/swagger.ts(1,26): error TS2307: Cannot find module 'swagger-jsdoc' or its corresponding type declarations.
+src/docs/swagger.ts(2,23): error TS2307: Cannot find module 'swagger-ui-express' or its corresponding type declarations.
+src/infrastructure/database/postgres.ts(1,22): error TS2307: Cannot find module 'pg' or its corresponding type declarations.
+src/infrastructure/database/postgres.ts(2,25): error TS2307: Cannot find module 'dotenv' or its corresponding type declarations.
+src/infrastructure/repositories/postgres-role.repository.ts(1,22): error TS2307: Cannot find module 'pg' or its corresponding type declarations.
+src/infrastructure/repositories/postgres-role.repository.ts(74,32): error TS7006: Parameter 'row' implicitly has an 'any' type.
+src/infrastructure/repositories/postgres-setting.repository.ts(1,22): error TS2307: Cannot find module 'pg' or its corresponding type declarations.
+src/infrastructure/repositories/postgres-user.repository.ts(1,22): error TS2307: Cannot find module 'pg' or its corresponding type declarations.
