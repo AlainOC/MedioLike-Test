@@ -7,6 +7,7 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const user_routes_1 = __importDefault(require("./presentation/routes/user.routes"));
 const setting_routes_1 = __importDefault(require("./presentation/routes/setting.routes"));
+const role_routes_1 = __importDefault(require("./presentation/routes/role.routes"));
 const swagger_1 = require("./docs/swagger");
 class App {
     app;
@@ -28,6 +29,7 @@ class App {
         // Modules
         this.app.use('/api/users', user_routes_1.default);
         this.app.use('/api/settings', setting_routes_1.default);
+        this.app.use('/api/roles', role_routes_1.default);
     }
 }
 exports.default = new App().app;

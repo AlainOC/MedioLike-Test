@@ -13,8 +13,10 @@ class UserService {
         return this.userRepository.findById(id);
     }
     async createUser(data) {
-        // En una app real, aquí encriptaríamos el password_hash con bcrypt!
-        // Ejemplo mockeado: data.passwordHash = await bcrypt.hash(data.passwordHash, 10);
+        const existing = await this.userRepository.findByEmail(data.email);
+        if (existing) {
+            throw new Error(`Email '${data.email}' is already registered`);
+        }
         return this.userRepository.create(data);
     }
     async updateUser(id, data) {

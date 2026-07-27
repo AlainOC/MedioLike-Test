@@ -1,0 +1,60 @@
+
+Warning: This is a simple server for use in testing or debugging Angular applications
+locally. It hasn't been reviewed for security issues.
+
+Binding this server to an open connection can result in compromising your application or
+computer. Using a different host than the one passed to the "--host" flag might result in
+websocket connection issues.
+    
+❯ Building...
+✔ Building...
+Application bundle generation failed. [10.748 seconds] - 2026-07-17T07:46:11.501Z
+
+✘ [ERROR] Could not resolve "node_modules/primeng/resources/themes/lara-dark-blue/theme.css"
+
+    angular:styles/global:styles:1:8:
+      1 │ @import 'node_modules/primeng/resources/themes/lara-dark-blue/theme...
+        ╵         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  You can mark the path "node_modules/primeng/resources/themes/lara-dark-blue/theme.css" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+
+
+✘ [ERROR] Could not resolve "node_modules/primeng/resources/primeng.min.css"
+
+    angular:styles/global:styles:2:8:
+      2 │ @import 'node_modules/primeng/resources/primeng.min.css';
+        ╵         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  You can mark the path "node_modules/primeng/resources/primeng.min.css" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+
+
+Watch mode enabled. Watching for file changes...
+npm error path /app
+npm error command failed
+npm error signal SIGTERM
+npm error command sh -c ng serve --host 0.0.0.0 --port 4200
+npm error A complete log of this run can be found in: /root/.npm/_logs/2026-07-17T07_45_56_423Z-debug-0.log
+
+Warning: This is a simple server for use in testing or debugging Angular applications
+locally. It hasn't been reviewed for security issues.
+
+Binding this server to an open connection can result in compromising your application or
+computer. Using a different host than the one passed to the "--host" flag might result in
+websocket connection issues.
+    
+❯ Building...
+✔ Building...
+Initial chunk files | Names         | Raw size
+main.js             | main          | 27.52 kB | 
+polyfills.js        | polyfills     | 95 bytes | 
+styles.css          | styles        | 95 bytes | 
+
+                    | Initial total | 27.71 kB
+
+Application bundle generation complete. [9.883 seconds] - 2026-07-17T07:47:40.379Z
+
+Watch mode enabled. Watching for file changes...
+NOTE: Raw file sizes do not reflect development server per-request transformations.
+7:47:41 AM [vite] (client) Re-optimizing dependencies because lockfile has changed
+  ➜  Local:   http://localhost:4200/
+  ➜  Network: http://172.18.0.3:4200/

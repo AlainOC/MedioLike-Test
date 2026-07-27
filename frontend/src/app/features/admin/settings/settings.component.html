@@ -1,94 +1,120 @@
-<div class="card p-4 mx-4 my-4 shadow-sm border-round border-1 surface-border">
-    <h2>Configuración del Sistema</h2>
-
-    <div class="mb-3 flex justify-content-end">
-        <p-button label="Nueva Configuración" icon="pi pi-plus" (onClick)="showDialog()"></p-button>
+<div class="card-premium p-5 mb-5 mx-auto" style="max-width: 1200px;">
+    <div class="flex align-items-center justify-content-between mb-4">
+        <div>
+            <h2 class="m-0 mb-1" style="font-size: 1.5rem;">Configuración del Sistema</h2>
+            <p class="m-0 text-500 text-sm">Ajusta los parámetros y banderas (flags) del entorno.</p>
+        </div>
+        <p-button label="Nueva Configuración" icon="pi pi-plus" (onClick)="showDialog()"
+            styleClass="btn-primary"></p-button>
     </div>
 
     <p-table [value]="settings" [paginator]="true" [rows]="10" responsiveLayout="scroll">
         <ng-template pTemplate="header">
             <tr>
-                <th>Clave</th>
-                <th>Valor</th>
-                <th>Privacidad</th>
-                <th>Actualizado</th>
-                <th>Acciones</th>
+                <th style="width: 25%">Clave</th>
+                <th style="width: 25%">Valor</th>
+                <th style="width: 15%">Privacidad</th>
+                <th style="width: 20%">Actualizado</th>
+                <th style="width: 15%; text-align: right;">Acciones</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-setting>
             <tr>
                 <td>
-                    <span class="font-bold">{{setting.key}}</span>
-                    <br><small class="text-500">{{setting.description}}</small>
+                    <span class="font-semibold block mb-1">{{setting.key}}</span>
+                    <small class="text-400 font-mono">{{setting.description}}</small>
                 </td>
-                <td>{{setting.value}} <i>({{setting.valueType}})</i></td>
-                <td>
-                    <i class="pi"
-                        [ngClass]="{'pi-eye text-green-500': setting.isPublic, 'pi-eye-slash text-red-500': !setting.isPublic}"></i>
+                <td class="font-mono text-400">
+                    {{setting.value}} <span class="text-600 text-xs ml-1">({{setting.valueType}})</span>
                 </td>
-                <td>{{setting.updatedAt | date:'medium'}}</td>
                 <td>
-                    <p-button icon="pi pi-pencil" styleClass="p-button-rounded p-button-info mr-2" size="small"
+                    <span class="status-badge" [ngClass]="setting.isPublic ? 'status-active' : 'status-suspended'">
+                        <i class="pi mr-1" [ngClass]="setting.isPublic ? 'pi-eye' : 'pi-eye-slash'"
+                            style="font-size: 0.7rem;"></i>
+                        {{ setting.isPublic ? 'Público' : 'Privado' }}
+                    </span>
+                </td>
+                <td class="text-400">{{setting.updatedAt | date:'MMM d, y, h:mm a'}}</td>
+                <td style="text-align: right;">
+                    <p-button icon="pi pi-cog" styleClass="btn-ghost p-button-rounded mr-2" size="small"
                         (onClick)="showDialog(setting)"></p-button>
-                    <p-button icon="pi pi-trash" styleClass="p-button-rounded p-button-danger" size="small"
+                    <p-button icon="pi pi-trash" styleClass="p-button-danger p-button-rounded" size="small"
                         (onClick)="deleteSetting(setting.id)"></p-button>
                 </td>
             </tr>
         </ng-template>
         <ng-template pTemplate="emptymessage">
             <tr>
-                <td colspan="5">No se encontraron configuraciones.</td>
+                <td colspan="5" class="text-center p-5 text-500 border-none">
+                    <div class="flex flex-column align-items-center justify-content-center py-5">
+                        <i class="pi pi-sliders-h mb-3 text-4xl text-600"></i>
+                        <p class="m-0 font-medium text-lg">No hay configuraciones</p>
+                        <p class="mt-2 mb-0 text-sm text-500">Acepta variables de entorno globales desde aquí.</p>
+                    </div>
+                </td>
             </tr>
         </ng-template>
     </p-table>
 
     <p-dialog [(visible)]="displayDialog" [style]="{width: '500px'}"
-        [header]="isEditMode ? 'Editar Configuración' : 'Nueva Configuración'" [modal]="true" class="p-fluid">
-        <form [formGroup]="settingForm" (ngSubmit)="saveSetting()">
-            <div class="field">
-                <label for="key">Clave (Ej. TIME_ZONE)</label>
-                <input type="text" pInputText id="key" formControlName="key" required autofocus autocomplete="off" />
-            </div>
+        [header]="isEditMode ? 'Editar Configuración' : 'Nueva Configuración'" [modal]="true" class="p-fluid"
+        [draggable]="false" [resizable]="false">
+        <div class="pt-2">
+            <p class="text-400 mb-4 text-sm mt-0">Especifica la clave y su valor asociado.</p>
+            <form [formGroup]="settingForm" (ngSubmit)="saveSetting()">
+                <div class="field mb-4">
+                    <label for="key" class="block font-medium mb-2 text-sm text-300">Clave (Ej. TIME_ZONE)</label>
+                    <input type="text" pInputText id="key" formControlName="key" required autofocus
+                        autocomplete="off" />
+                </div>
 
-            <div class="field mt-3">
-                <label for="value">Valor</label>
-                <input type="text" pInputText id="value" formControlName="value" required />
-            </div>
+                <div class="field mb-4">
+                    <label for="value" class="block font-medium mb-2 text-sm text-300">Valor</label>
+                    <input type="text" pInputText id="value" formControlName="value" required />
+                </div>
 
-            <div class="field mt-3">
-                <label for="valueType">Tipo de Valor</label>
-                <div class="flex flex-wrap gap-3 mt-2">
-                    <div class="flex align-items-center">
-                        <input type="radio" id="stringType" value="string" formControlName="valueType">
-                        <label for="stringType" class="ml-2">String</label>
-                    </div>
-                    <div class="flex align-items-center">
-                        <input type="radio" id="booleanType" value="boolean" formControlName="valueType">
-                        <label for="booleanType" class="ml-2">Booleano</label>
-                    </div>
-                    <div class="flex align-items-center">
-                        <input type="radio" id="jsonType" value="json" formControlName="valueType">
-                        <label for="jsonType" class="ml-2">JSON</label>
+                <div class="field mb-4">
+                    <label class="block font-medium mb-3 text-sm text-300">Tipo de Valor</label>
+                    <div class="flex gap-4">
+                        <div class="flex align-items-center">
+                            <input type="radio" id="stringType" value="string" formControlName="valueType">
+                            <label for="stringType" class="ml-2 text-400">String</label>
+                        </div>
+                        <div class="flex align-items-center">
+                            <input type="radio" id="booleanType" value="boolean" formControlName="valueType">
+                            <label for="booleanType" class="ml-2 text-400">Booleano</label>
+                        </div>
+                        <div class="flex align-items-center">
+                            <input type="radio" id="jsonType" value="json" formControlName="valueType">
+                            <label for="jsonType" class="ml-2 text-400">JSON</label>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="field mt-3">
-                <label for="description">Descripción</label>
-                <input type="text" pInputText id="description" formControlName="description" />
-            </div>
+                <div class="field mb-4">
+                    <label for="description" class="block font-medium mb-2 text-sm text-300">Descripción</label>
+                    <input type="text" pInputText id="description" formControlName="description" />
+                </div>
 
-            <div class="field-checkbox mt-4">
-                <p-checkbox formControlName="isPublic" [binary]="true" inputId="isPublic"></p-checkbox>
-                <label for="isPublic">Hacer público para clientes (Frontend sin token)</label>
-            </div>
+                <div class="p-3 mb-4 border-round"
+                    style="background-color: var(--bg-hover); border: 1px solid var(--border-color);">
+                    <div class="flex align-items-center">
+                        <p-checkbox formControlName="isPublic" [binary]="true" inputId="isPublic"
+                            styleClass="mr-3"></p-checkbox>
+                        <div class="flex flex-column">
+                            <label for="isPublic" class="font-medium text-sm">Hacer público para clientes</label>
+                            <span class="text-xs text-500 mt-1">Permite ver este entorno en el frontend sin token</span>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="form-actions mt-4 flex justify-content-end">
-                <p-button label="Cancelar" icon="pi pi-times" class="p-button-text mr-2"
-                    (onClick)="hideDialog()"></p-button>
-                <p-button [label]="isEditMode ? 'Actualizar' : 'Guardar'" icon="pi pi-check" type="submit"
-                    [disabled]="settingForm.invalid"></p-button>
-            </div>
-        </form>
+                <div class="flex justify-content-end gap-3 mt-5 border-top-1 pt-4"
+                    style="border-color: var(--border-color);">
+                    <p-button label="Cancelar" styleClass="btn-ghost" (onClick)="hideDialog()"></p-button>
+                    <p-button [label]="isEditMode ? 'Actualizar' : 'Guardar'" type="submit"
+                        [disabled]="settingForm.invalid" styleClass="btn-primary"></p-button>
+                </div>
+            </form>
+        </div>
     </p-dialog>
 </div>

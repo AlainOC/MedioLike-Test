@@ -1,0 +1,40 @@
+
+> mediolike-backend@1.0.0 build
+> tsc
+
+src/application/services/setting.service.spec.ts(22,98): error TS2353: Object literal may only specify known properties, and 'isPublic' does not exist in type 'Omit<Setting, "id" | "createdAt" | "updatedAt">'.
+src/application/services/setting.service.spec.ts(30,30): error TS2353: Object literal may only specify known properties, and 'isPublic' does not exist in type 'Setting | Promise<Setting | null>'.
+src/application/services/setting.service.spec.ts(33,105): error TS2353: Object literal may only specify known properties, and 'isPublic' does not exist in type 'Omit<Setting, "id" | "createdAt" | "updatedAt">'.
+src/application/services/user.service.spec.ts(23,36): error TS2739: Type '{ id: string; email: string; passwordHash: string; status: UserStatus.ACTIVE; roleId: string; createdAt: Date; updatedAt: Date; }' is missing the following properties from type 'User': emailVerifiedAt, lastLoginAt, deletedAt
+src/application/services/user.service.spec.ts(35,62): error TS2345: Argument of type '{ id: string; email: string; passwordHash: string; status: UserStatus.ACTIVE; roleId: string; createdAt: Date; updatedAt: Date; }' is not assignable to parameter of type 'User | Promise<User | null> | null'.
+  Type '{ id: string; email: string; passwordHash: string; status: UserStatus.ACTIVE; roleId: string; createdAt: Date; updatedAt: Date; }' is missing the following properties from type 'User': emailVerifiedAt, lastLoginAt, deletedAt
+src/application/services/user.service.spec.ts(40,45): error TS2345: Argument of type '{ email: string; passwordHash: string; roleId: string; }' is not assignable to parameter of type 'Omit<User, "id" | "createdAt" | "updatedAt" | "deletedAt">'.
+  Type '{ email: string; passwordHash: string; roleId: string; }' is missing the following properties from type 'Omit<User, "id" | "createdAt" | "updatedAt" | "deletedAt">': status, emailVerifiedAt, lastLoginAt
+
+> mediolike-backend@1.0.0 build
+> tsc
+
+src/application/services/setting.service.spec.ts(22,98): error TS2353: Object literal may only specify known properties, and 'isPublic' does not exist in type 'Omit<Setting, "id" | "createdAt" | "updatedAt">'.
+src/application/services/setting.service.spec.ts(30,30): error TS2353: Object literal may only specify known properties, and 'isPublic' does not exist in type 'Setting | Promise<Setting | null>'.
+src/application/services/setting.service.spec.ts(33,105): error TS2353: Object literal may only specify known properties, and 'isPublic' does not exist in type 'Omit<Setting, "id" | "createdAt" | "updatedAt">'.
+src/application/services/user.service.spec.ts(23,36): error TS2739: Type '{ id: string; email: string; passwordHash: string; status: UserStatus.ACTIVE; roleId: string; createdAt: Date; updatedAt: Date; }' is missing the following properties from type 'User': emailVerifiedAt, lastLoginAt, deletedAt
+src/application/services/user.service.spec.ts(35,62): error TS2345: Argument of type '{ id: string; email: string; passwordHash: string; status: UserStatus.ACTIVE; roleId: string; createdAt: Date; updatedAt: Date; }' is not assignable to parameter of type 'User | Promise<User | null> | null'.
+  Type '{ id: string; email: string; passwordHash: string; status: UserStatus.ACTIVE; roleId: string; createdAt: Date; updatedAt: Date; }' is missing the following properties from type 'User': emailVerifiedAt, lastLoginAt, deletedAt
+src/application/services/user.service.spec.ts(40,45): error TS2345: Argument of type '{ email: string; passwordHash: string; roleId: string; }' is not assignable to parameter of type 'Omit<User, "id" | "createdAt" | "updatedAt" | "deletedAt">'.
+  Type '{ email: string; passwordHash: string; roleId: string; }' is missing the following properties from type 'Omit<User, "id" | "createdAt" | "updatedAt" | "deletedAt">': status, emailVerifiedAt, lastLoginAt
+
+> mediolike-backend@1.0.0 build
+> tsc
+
+src/application/services/setting.service.spec.ts(22,98): error TS2353: Object literal may only specify known properties, and 'isPublic' does not exist in type 'Omit<Setting, "id" | "createdAt" | "updatedAt">'.
+src/application/services/setting.service.spec.ts(30,30): error TS2353: Object literal may only specify known properties, and 'isPublic' does not exist in type 'Setting | Promise<Setting | null>'.
+src/application/services/setting.service.spec.ts(33,105): error TS2353: Object literal may only specify known properties, and 'isPublic' does not exist in type 'Omit<Setting, "id" | "createdAt" | "updatedAt">'.
+src/application/services/user.service.spec.ts(23,36): error TS2739: Type '{ id: string; email: string; passwordHash: string; status: UserStatus.ACTIVE; roleId: string; createdAt: Date; updatedAt: Date; }' is missing the following properties from type 'User': emailVerifiedAt, lastLoginAt, deletedAt
+src/application/services/user.service.spec.ts(35,62): error TS2345: Argument of type '{ id: string; email: string; passwordHash: string; status: UserStatus.ACTIVE; roleId: string; createdAt: Date; updatedAt: Date; }' is not assignable to parameter of type 'User | Promise<User | null> | null'.
+  Type '{ id: string; email: string; passwordHash: string; status: UserStatus.ACTIVE; roleId: string; createdAt: Date; updatedAt: Date; }' is missing the following properties from type 'User': emailVerifiedAt, lastLoginAt, deletedAt
+src/application/services/user.service.spec.ts(40,45): error TS2345: Argument of type '{ email: string; passwordHash: string; roleId: string; }' is not assignable to parameter of type 'Omit<User, "id" | "createdAt" | "updatedAt" | "deletedAt">'.
+  Type '{ email: string; passwordHash: string; roleId: string; }' is missing the following properties from type 'Omit<User, "id" | "createdAt" | "updatedAt" | "deletedAt">': status, emailVerifiedAt, lastLoginAt
+
+> mediolike-backend@1.0.0 build
+> tsc
+

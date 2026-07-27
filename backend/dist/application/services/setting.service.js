@@ -13,6 +13,13 @@ class SettingService {
         return this.settingRepository.findByKey(key);
     }
     async createSetting(data) {
+        if (!data.key || !data.value) {
+            throw new Error("Key and value are required to create a setting");
+        }
+        const existing = await this.settingRepository.findByKey(data.key);
+        if (existing) {
+            throw new Error(`Setting key '${data.key}' already exists`);
+        }
         return this.settingRepository.create(data);
     }
     async updateSetting(key, value) {

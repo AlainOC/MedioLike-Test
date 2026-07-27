@@ -1,0 +1,58 @@
+<div class="login-page">
+    <canvas #particleCanvas class="particle-canvas"></canvas>
+
+    <div class="login-card">
+        <!-- Logo & Header -->
+        <div class="text-center mb-5">
+            <div class="brand-logo-container">
+                <div class="brand-m">
+                    <span class="m-blue"></span>
+                    <span class="m-orange"></span>
+                </div>
+            </div>
+            <h2 class="login-title">
+                <span class="text-white">Medio</span><span style="color: var(--brand-orange)">Like</span>
+            </h2>
+            <p class="login-subtitle">Plataforma de Cursos Online · Admin</p>
+        </div>
+
+        <!-- Error Alert -->
+        <div *ngIf="loginFailed" class="login-error">
+            <i class="pi pi-exclamation-circle mr-2"></i>
+            <span>Credenciales inválidas. Verifica tu correo y contraseña.</span>
+        </div>
+
+        <!-- Form -->
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="login-field">
+                <label for="email">Correo Electrónico</label>
+                <div class="input-with-icon">
+                    <i class="pi pi-at"></i>
+                    <input type="email" pInputText id="email" formControlName="email" required autofocus
+                        placeholder="admin@admin.com" />
+                </div>
+            </div>
+            <div class="login-field">
+                <div class="flex justify-content-between align-items-center mb-2">
+                    <label for="password" class="m-0">Contraseña</label>
+                    <a href="#" class="login-forgot" (click)="$event.preventDefault()">¿Olvidaste tu contraseña?</a>
+                </div>
+                <div class="input-with-icon">
+                    <i class="pi pi-lock"></i>
+                    <input type="password" pInputText id="password" formControlName="password" required
+                        placeholder="••••••••" />
+                </div>
+            </div>
+
+            <button type="submit" class="login-btn mt-4" [disabled]="loginForm.invalid">
+                <span>Ingresar al Panel</span>
+                <i class="pi pi-arrow-right ml-2 text-sm"></i>
+            </button>
+        </form>
+
+        <!-- Footer -->
+        <div class="login-footer mt-5">
+            <i class="pi pi-shield mr-1"></i> Conexión Cifrada SSL Segura
+        </div>
+    </div>
+</div>
