@@ -1,0 +1,73 @@
+<div class="profile-container">
+  
+  <div class="profile-header">
+    <div class="header-bg"></div>
+    <div class="header-content">
+      <div class="avatar-wrapper">
+        <div class="avatar" *ngIf="!profileData.avatarUrl">{{ profileData.firstName.charAt(0) }}{{ profileData.lastName.charAt(0) }}</div>
+        <img *ngIf="profileData.avatarUrl" [src]="profileData.avatarUrl" alt="Avatar" class="avatar-img">
+        <label class="btn-change-avatar" pTooltip="Cambiar Avatar" tooltipPosition="bottom">
+          <i class="pi pi-camera"></i>
+          <input type="file" (change)="onFileSelected($event)" accept="image/*" style="display: none;">
+        </label>
+      </div>
+      <div class="user-info">
+        <h1>{{ profileData.firstName }} {{ profileData.lastName }}</h1>
+        <p class="role-badge"><i class="pi pi-verified"></i> {{ profileData.role }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="profile-body">
+    
+    <div class="settings-card">
+      <h2>Configuración de Perfil</h2>
+      <p class="subtitle">Actualiza tu información personal y detalles de contacto.</p>
+      
+      <form class="profile-form" (ngSubmit)="saveProfile()">
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" [(ngModel)]="profileData.firstName" name="firstName" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Apellidos</label>
+            <input type="text" [(ngModel)]="profileData.lastName" name="lastName" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Correo Electrónico</label>
+            <input type="email" [(ngModel)]="profileData.email" name="email" class="form-control" disabled>
+            <span class="help-text">Contacta a soporte para cambiar tu correo.</span>
+          </div>
+          <div class="form-group">
+            <label>Teléfono</label>
+            <input type="tel" [(ngModel)]="profileData.phone" name="phone" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Ubicación</label>
+          <input type="text" [(ngModel)]="profileData.location" name="location" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label>Biografía</label>
+          <textarea [(ngModel)]="profileData.bio" name="bio" class="form-control" rows="4" placeholder="Cuéntanos un poco sobre ti..."></textarea>
+        </div>
+
+        <div class="form-actions" style="margin-top: 30px; display: flex; gap: 15px; justify-content: flex-end;">
+          <button type="button" class="btn-outline">Cancelar</button>
+          <button type="submit" class="btn-primary" [disabled]="isSaving">
+            <span *ngIf="isSaving"><i class="pi pi-spin pi-spinner"></i> Guardando...</span>
+            <span *ngIf="!isSaving">Guardar Cambios</span>
+          </button>
+        </div>
+      </form>
+    </div>
+    
+  </div>
+</div>

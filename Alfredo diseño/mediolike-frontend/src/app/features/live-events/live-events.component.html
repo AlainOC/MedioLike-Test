@@ -1,0 +1,44 @@
+<div class="premium-dashboard">
+  <section class="premium-section">
+    <div class="section-header">
+      <h2><i class="pi pi-calendar"></i> Próximos Eventos en Vivo</h2>
+      <p style="color: var(--text-muted); margin-top: 5px;">Únete a las transmisiones y aprende en tiempo real.</p>
+    </div>
+
+    <!-- Loading State -->
+    <div *ngIf="isLoading" class="empty-state glass-card" style="text-align: center; padding: 40px;">
+      <i class="pi pi-spin pi-spinner" style="font-size: 3rem; color: var(--accent-cyan); margin-bottom: 15px;"></i>
+      <h3>Cargando eventos...</h3>
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="!isLoading && events.length === 0" class="empty-state glass-card" style="text-align: center; padding: 40px;">
+      <i class="pi pi-calendar-times" style="font-size: 3rem; color: #64748b; margin-bottom: 15px;"></i>
+      <h3 style="margin-bottom: 10px;">No hay eventos programados</h3>
+      <p style="color: #94a3b8; margin-bottom: 20px;">Vuelve más tarde para ver las próximas transmisiones en vivo.</p>
+    </div>
+
+    <!-- Events Grid -->
+    <div class="grid" *ngIf="!isLoading && events.length > 0" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+      <div class="glass-card suggestion-card" *ngFor="let event of events">
+        <div style="display: flex; gap: 15px; margin-bottom: 15px;">
+          <!-- Date Badge -->
+          <div style="background: rgba(0, 210, 255, 0.1); border: 1px solid rgba(0, 210, 255, 0.2); border-radius: 12px; width: 60px; height: 60px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <span style="font-size: 1.2rem; font-weight: 700; color: var(--accent-cyan);">{{ event.date | date:'dd' }}</span>
+            <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600;">{{ event.date | date:'MMM' }}</span>
+          </div>
+          <!-- Info -->
+          <div>
+            <h3 style="margin: 0 0 5px; font-size: 1.1rem;">{{ event.title }}</h3>
+            <p style="margin: 0; color: var(--text-muted); font-size: 0.85rem;"><i class="pi pi-clock" style="color: var(--accent-orange);"></i> {{ event.date | date:'shortTime' }}</p>
+          </div>
+        </div>
+        
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px; line-height: 1.5;">{{ event.description }}</p>
+        <p style="font-size: 0.85rem; margin-bottom: 15px;"><i class="pi pi-user" style="color: var(--text-muted);"></i> Instructor: <span style="color: var(--text-main);">{{ event.instructor?.profile?.firstName }} {{ event.instructor?.profile?.lastName }}</span></p>
+        
+        <a [href]="event.url" target="_blank" class="btn-primary" style="width: 100%; text-decoration: none;" [class.disabled]="!event.url">Unirse a la Transmisión</a>
+      </div>
+    </div>
+  </section>
+</div>

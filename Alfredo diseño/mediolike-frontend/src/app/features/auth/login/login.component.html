@@ -1,0 +1,123 @@
+<div class="login-wrapper">
+  <!-- Botón para volver al Inicio -->
+  <button class="back-home-btn" routerLink="/">
+    <i class="pi pi-arrow-left"></i> Volver
+  </button>
+  <!-- Fondo Estrellado Animado -->
+  <div class="stars-bg">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+  </div>
+
+  <div class="login-container">
+    <div class="glass-card">
+      
+      <div class="header-section">
+        <div class="logo">
+          <img src="logo.png" alt="MedioLike Logo" class="brand-logo" />
+        </div>
+        <p class="subtitle">Plataforma de Cursos Online</p>
+      </div>
+
+      <!-- VISTA INICIAR SESIÓN -->
+      <div class="form-content" *ngIf="!showRegister">
+        
+        <form (ngSubmit)="onLogin($event)">
+          <div class="form-group">
+            <label>Correo Electrónico</label>
+            <div class="input-wrapper">
+              <i class="pi pi-envelope"></i>
+              <input type="email" placeholder="ejemplo@correo.com" [(ngModel)]="loginEmail" name="email">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>Contraseña</label>
+            <div class="input-wrapper">
+              <i class="pi pi-lock"></i>
+              <input [type]="showPassword ? 'text' : 'password'" placeholder="Tu contraseña" [(ngModel)]="loginPassword" name="password">
+              <button type="button" class="btn-icon" (click)="showPassword = !showPassword">
+                <i class="pi" [ngClass]="showPassword ? 'pi-eye' : 'pi-eye-slash'"></i>
+              </button>
+            </div>
+            <a routerLink="/forgot-password" class="forgot-link">¿Olvidaste tu contraseña?</a>
+          </div>
+
+          <button type="submit" class="btn-primary" [disabled]="isLoading">
+            {{ isLoading ? 'Procesando...' : 'Ingresar al Panel' }}
+            <i class="pi pi-arrow-right" *ngIf="!isLoading"></i>
+            <i class="pi pi-spinner pi-spin" *ngIf="isLoading"></i>
+          </button>
+        </form>
+
+        <div class="divider">
+          <span>O ingresa con</span>
+        </div>
+
+        <div class="social-buttons">
+          <button class="btn-social"><i class="pi pi-google"></i></button>
+          <button class="btn-social"><i class="pi pi-facebook"></i></button>
+          <button class="btn-social"><i class="pi pi-apple"></i></button>
+        </div>
+
+        <p class="switch-mode">¿No tienes cuenta? <a href="javascript:void(0)" (click)="toggleMode()">Regístrate gratis</a></p>
+        
+        <!-- Test Accounts Info -->
+        <p class="test-accounts">
+          <i class="pi pi-shield"></i> Conexión Cifrada SSL Segura<br>
+          <span style="font-size: 0.7rem; color: #666; margin-top: 5px; display: block;">Test: admin&#64;mediolike.com / instructor&#64;mediolike.com</span>
+        </p>
+
+      </div>
+
+      <!-- VISTA REGISTRO -->
+      <div class="form-content" *ngIf="showRegister">
+        <form (submit)="onRegister($event)">
+          
+          <div class="form-group">
+            <label>Nombre Completo</label>
+            <div class="input-wrapper">
+              <i class="pi pi-user"></i>
+              <input type="text" placeholder="Juan Pérez" [(ngModel)]="registerFirstName" name="firstName">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Correo Electrónico</label>
+            <div class="input-wrapper">
+              <i class="pi pi-envelope"></i>
+              <input type="email" placeholder="Ingresa tu correo" [(ngModel)]="registerEmail" name="registerEmail">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>Contraseña</label>
+            <div class="input-wrapper">
+              <i class="pi pi-lock"></i>
+              <input [type]="showRegisterPassword ? 'text' : 'password'" placeholder="Mínimo 8 caracteres" [(ngModel)]="registerPassword" name="registerPassword">
+              <button type="button" class="btn-icon" (click)="showRegisterPassword = !showRegisterPassword">
+                <i class="pi" [ngClass]="showRegisterPassword ? 'pi-eye' : 'pi-eye-slash'"></i>
+              </button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-primary">Crear Cuenta <i class="pi pi-arrow-right"></i></button>
+        </form>
+
+        <div class="divider">
+          <span>O regístrate con</span>
+        </div>
+
+        <div class="social-buttons">
+          <button class="btn-social"><i class="pi pi-google"></i></button>
+          <button class="btn-social"><i class="pi pi-facebook"></i></button>
+          <button class="btn-social"><i class="pi pi-apple"></i></button>
+        </div>
+
+        <p class="switch-mode">¿Ya tienes cuenta? <a href="javascript:void(0)" (click)="toggleMode()">Inicia Sesión</a></p>
+      </div>
+
+    </div>
+  </div>
+</div>

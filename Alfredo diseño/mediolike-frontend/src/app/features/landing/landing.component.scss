@@ -1,0 +1,535 @@
+$bg-dark: #0a0f1c;
+$brand-cyan: #00d2ff;
+$brand-cyan-hover: #00b8e6;
+$promo-bg: #004e92; // MedioLike Blue
+$text-light: #f8fafc;
+$text-gray: #94a3b8;
+
+.landing-page {
+  background-color: $bg-dark;
+  min-height: 100vh;
+  color: $text-light;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  position: relative;
+
+  /* Static Starry Sky */
+  .stars-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: 
+      radial-gradient(1px 1px at 20px 30px, rgba(255, 255, 255, 0.8), rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 40px 70px, rgba(255, 255, 255, 0.9), rgba(0,0,0,0)),
+      radial-gradient(1.5px 1.5px at 50px 160px, rgba(255, 255, 255, 0.6), rgba(0,0,0,0)),
+      radial-gradient(2px 2px at 90px 40px, rgba(0, 210, 255, 0.7), rgba(0,0,0,0)),
+      radial-gradient(1.5px 1.5px at 130px 80px, rgba(255, 255, 255, 0.8), rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 160px 120px, rgba(255, 255, 255, 1), rgba(0,0,0,0)),
+      radial-gradient(2px 2px at 180px 190px, rgba(0, 210, 255, 0.6), rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 220px 240px, rgba(255, 255, 255, 0.7), rgba(0,0,0,0)),
+      radial-gradient(1.5px 1.5px at 280px 50px, rgba(255, 255, 255, 0.8), rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 350px 100px, rgba(255, 255, 255, 0.9), rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 400px 400px;
+    animation: twinkle 5s infinite alternate ease-in-out;
+  }
+
+  @keyframes twinkle {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+  }
+
+  /* Shooting Stars Effect */
+  .shooting-stars {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+
+    .star {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 150px;
+      height: 2px;
+      /* Gradiente: cabeza brillante a la izquierda, cola difuminada a la derecha */
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), rgba(0, 210, 255, 0.4), rgba(0, 210, 255, 0));
+      border-radius: 50%;
+      transform: rotate(-45deg) translateX(0);
+      animation: shooting-star 8s linear infinite;
+      opacity: 0;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0; /* La bola va al frente (izquierda en el eje X) */
+        transform: translateY(-50%);
+        width: 6px;
+        height: 6px;
+        background: #fff;
+        border-radius: 50%;
+        box-shadow: 0 0 10px 4px rgba(0, 210, 255, 0.5);
+      }
+    }
+
+    /* Randomize stars */
+    .star:nth-child(1) { top: -10%; left: 80%; animation-delay: 0s; animation-duration: 9s; }
+    .star:nth-child(2) { top: 20%; left: 110%; animation-delay: 2s; animation-duration: 12s; }
+    .star:nth-child(3) { top: 60%; left: 120%; animation-delay: 5s; animation-duration: 10s; }
+    .star:nth-child(4) { top: -20%; left: 40%; animation-delay: 7s; animation-duration: 14s; }
+    .star:nth-child(5) { top: 40%; left: 90%; animation-delay: 1s; animation-duration: 8s; }
+    .star:nth-child(6) { top: 10%; left: 60%; animation-delay: 4s; animation-duration: 11s; }
+    .star:nth-child(7) { top: 80%; left: 100%; animation-delay: 8s; animation-duration: 13s; }
+  }
+
+  @keyframes shooting-star {
+    0% {
+      transform: rotate(-45deg) translateX(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: rotate(-45deg) translateX(-1500px);
+      opacity: 0;
+    }
+  }
+
+  /* HERO SECTION */
+  .hero-section {
+    position: relative;
+
+    
+    @keyframes subtleFloat {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0); }
+    }
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 120px 20px 80px;
+    background: radial-gradient(circle at top center, rgba(0, 210, 255, 0.05), transparent 60%);
+
+    .glow-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: 0;
+      animation: floatOrb 10s infinite alternate ease-in-out;
+    }
+    .orb-1 {
+      width: 400px; height: 400px;
+      background: rgba(0, 210, 255, 0.15);
+      top: -100px; left: -100px;
+    }
+    .orb-2 {
+      width: 300px; height: 300px;
+      background: rgba(255, 154, 0, 0.1);
+      bottom: -50px; right: 10%;
+      animation-delay: -5s;
+    }
+
+    @keyframes floatOrb {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(30px) scale(1.1); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+  }
+}
+
+.navbar-dark {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: #000000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      
+      .brand-logo {
+        height: 38px;
+        width: auto;
+        object-fit: contain;
+        border-radius: 6px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      }
+    }
+    .logo-text {
+      color: white;
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      background: #1e1e1e;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 8px 15px;
+      width: 300px;
+      
+      i {
+        color: #888;
+        margin-right: 10px;
+      }
+
+      input {
+        background: transparent;
+        border: none;
+        outline: none;
+        color: white;
+        width: 100%;
+        font-size: 0.95rem;
+
+        &::placeholder {
+          color: #888;
+        }
+      }
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    a {
+      color: #bbb;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+
+      &:hover {
+        color: white;
+      }
+    }
+
+    .btn-acceder {
+      background-color: $brand-cyan;
+      color: #000;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s;
+
+      &:hover {
+        background-color: $brand-cyan-hover;
+      }
+    }
+  }
+}
+
+.hero-platzi {
+  padding: 0;
+  max-width: 1200px;
+  margin: 40px auto;
+
+  .promo-container {
+    display: flex;
+    background-color: $promo-bg; // Usando el naranja de Platzi
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    min-height: 400px;
+
+    .promo-pattern {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 250px;
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(0,0,0,0.1),
+        rgba(0,0,0,0.1) 20px,
+        rgba(0,0,0,0.2) 20px,
+        rgba(0,0,0,0.2) 40px
+      );
+      mix-blend-mode: overlay;
+      opacity: 0.5;
+    }
+
+    .promo-content {
+      flex: 1;
+      padding: 50px 60px;
+      position: relative;
+      z-index: 2;
+
+      .promo-badge {
+        background: white;
+        color: $promo-bg;
+        padding: 4px 12px;
+        border-radius: 4px;
+        font-weight: 800;
+        font-size: 1.2rem;
+        display: inline-block;
+        margin-bottom: 20px;
+      }
+
+      h1 {
+        font-size: 2.8rem;
+        font-weight: 800;
+        line-height: 1.1;
+        margin: 0 0 20px;
+        color: #fff;
+      }
+
+      .pricing-info {
+        margin-bottom: 25px;
+        color: #fff;
+
+        .current-price {
+          font-size: 1.2rem;
+          margin: 0 0 5px;
+          .savings {
+            font-weight: 600;
+          }
+        }
+
+        .old-price {
+          font-size: 1rem;
+          opacity: 0.8;
+          margin: 0;
+        }
+      }
+
+      .btn-aprovechar {
+        background: $brand-cyan;
+        color: #000;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 800;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        justify-content: center;
+        transition: transform 0.2s;
+
+        &:hover {
+          transform: scale(1.02);
+          background: $brand-cyan-hover;
+        }
+      }
+
+      .countdown {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-top: 25px;
+        color: #fff;
+        font-weight: 600;
+
+        .time-boxes {
+          display: flex;
+          gap: 10px;
+
+          .time-box {
+            background: #000;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 700;
+          }
+        }
+      }
+    }
+
+    .promo-image {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      
+      .mockup-img {
+        max-width: 90%;
+        height: auto;
+        object-fit: contain;
+        border-radius: 16px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 210, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transform: translateY(0);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        animation: subtleFloat 6s ease-in-out infinite;
+
+        &:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 60px rgba(0, 210, 255, 0.3);
+        }
+      }
+    }
+  }
+}
+
+.headline-section {
+  text-align: center;
+  padding: 60px 20px;
+
+  h2 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: #fff;
+    margin: 0;
+
+    .text-cyan {
+      color: $brand-cyan;
+    }
+  }
+}
+
+/* Features Carrusel */
+.features-section {
+  padding: 40px 20px 80px;
+
+  .marquee-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 20px 0;
+
+    .marquee-track {
+      display: flex;
+      gap: 30px;
+      animation: scroll 20s linear infinite;
+      width: max-content;
+      
+      &:hover {
+        animation-play-state: paused;
+      }
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 30px;
+      width: 350px;
+      position: relative;
+
+      .icon-box {
+        font-size: 2rem;
+        color: $brand-cyan;
+        margin-bottom: 20px;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        margin: 0 0 15px;
+        color: white;
+      }
+
+      p {
+        color: #bbb;
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      &.featured {
+        border-color: $brand-cyan;
+        box-shadow: 0 0 20px rgba(0, 230, 118, 0.1);
+        
+        .ribbon {
+          position: absolute;
+          top: 15px;
+          right: 15px;
+          background: $brand-cyan;
+          color: #000;
+          padding: 4px 10px;
+          border-radius: 20px;
+          font-weight: 800;
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+
+  .stats-banner {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 60px;
+    border-top: 1px solid #333;
+    padding-top: 40px;
+
+    .stat-item {
+      text-align: center;
+      
+      .counter {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: $brand-cyan;
+        margin: 0 0 10px;
+      }
+      span {
+        color: #888;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+    }
+  }
+}
+
+.footer {
+  text-align: center;
+  padding: 30px;
+  border-top: 1px solid #333;
+  color: #666;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 15px)); }
+}
+
+@media (max-width: 900px) {
+  .navbar-dark {
+    flex-direction: column;
+    gap: 15px;
+    .nav-left .search-bar { width: 100%; }
+    .nav-links { flex-wrap: wrap; justify-content: center; }
+  }
+
+  .hero-platzi .promo-container {
+    flex-direction: column;
+    .promo-image { width: 100%; height: 200px; }
+  }
+
+  .headline-section h2 { font-size: 2.5rem; }
+  .features-section .stats-banner { flex-direction: column; gap: 30px; }
+}

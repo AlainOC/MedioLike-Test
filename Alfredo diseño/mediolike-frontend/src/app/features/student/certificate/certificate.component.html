@@ -1,0 +1,55 @@
+<div class="certificate-wrapper">
+  <div class="actions no-print">
+    <button class="btn-premium" (click)="printCertificate()" [disabled]="isGenerating">
+      <i class="pi" [ngClass]="isGenerating ? 'pi-spin pi-spinner' : 'pi-print'"></i> 
+      {{ isGenerating ? 'Generando PDF...' : 'Imprimir o Guardar como PDF' }}
+    </button>
+  </div>
+
+  <div class="certificate-container" id="certificate">
+    <div class="cert-border-outer">
+      <div class="cert-border-inner">
+        
+        <div class="cert-header">
+          <img src="logo.png" alt="Mediolike" class="logo">
+          <h2>CERTIFICADO DE FINALIZACIÓN</h2>
+        </div>
+
+        <div class="cert-body">
+          <p class="presented-to">Este certificado se otorga con orgullo a</p>
+          <h1 class="student-name">{{ studentName }}</h1>
+          
+          <p class="description">
+            por haber completado exitosamente todos los módulos y evaluaciones del programa educativo:
+          </p>
+          <h3 class="course-title">{{ courseTitle }}</h3>
+        </div>
+
+        <div class="cert-footer">
+          <div class="signature">
+            <div class="line"></div>
+            <p>{{ instructorName }}</p>
+            <p>Instructor(a)</p>
+          </div>
+          
+          <div class="seal" style="display: flex; gap: 15px; align-items: center; justify-content: center;">
+            <div class="qr-box" *ngIf="certificateUrl" style="background: white; padding: 5px; border-radius: 4px;">
+              <qrcode [qrdata]="certificateUrl" [width]="80" [errorCorrectionLevel]="'M'"></qrcode>
+            </div>
+            <div class="badge-seal">
+              <i class="pi pi-verified"></i>
+              <span>OFICIAL</span>
+            </div>
+          </div>
+          
+          <div class="date">
+            <div class="line"></div>
+            <p>Fecha de Emisión</p>
+            <p>{{ issueDate }}</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

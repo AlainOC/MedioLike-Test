@@ -1,0 +1,74 @@
+$primary: #4f46e5;
+$bg-white: #ffffff;
+$text-dark: #1e293b;
+$text-light: #64748b;
+$border-light: #e2e8f0;
+
+.admin-container {
+  max-width: 1200px; margin: 0 auto; padding: 30px 20px; display: flex; flex-direction: column; gap: 30px;
+}
+
+.page-header {
+  h1 { margin: 0 0 5px; font-size: 2rem; color: $text-dark; }
+  p { margin: 0; color: $text-light; font-size: 1.1rem; }
+}
+
+.split-layout {
+  display: flex; gap: 30px;
+  align-items: flex-start;
+}
+
+.config-card {
+  flex: 1; min-width: 300px;
+  background: $bg-white; border-radius: 12px; border: 1px solid $border-light; box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+  
+  .card-header { padding: 20px; border-bottom: 1px solid $border-light; font-weight: 600; font-size: 1.1rem; color: $text-dark; display: flex; align-items: center; gap: 10px; }
+  
+  .card-body {
+    padding: 20px;
+    .desc { margin: 0 0 20px; color: $text-light; font-size: 0.95rem; line-height: 1.5; }
+    
+    .form-group {
+      label { display: block; font-weight: 600; font-size: 0.9rem; color: $text-dark; margin-bottom: 10px; }
+      .input-with-btn {
+        display: flex; gap: 10px;
+        input { flex: 1; padding: 12px 15px; border: 1px solid $border-light; border-radius: 8px; outline: none; font-size: 1rem; color: $text-dark; &:focus { border-color: $primary; } }
+        button { padding: 12px 20px; border-radius: 8px; font-weight: 600; border: none; cursor: pointer; transition: 0.2s; background: $primary; color: white; &:hover { opacity: 0.9; } }
+      }
+    }
+  }
+}
+
+.transactions-card {
+  flex: 2;
+  background: $bg-white; border-radius: 12px; border: 1px solid $border-light; box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+  
+  .card-header { padding: 20px; border-bottom: 1px solid $border-light; font-weight: 600; font-size: 1.1rem; color: $text-dark; display: flex; align-items: center; gap: 10px; }
+  
+  .data-table {
+    width: 100%; overflow-x: auto;
+    .table-header {
+      display: flex; padding: 15px 20px; background: #f8fafc; border-bottom: 1px solid $border-light;
+      font-weight: 600; font-size: 0.85rem; color: $text-light; text-transform: uppercase;
+    }
+    .table-row {
+      display: flex; padding: 15px 20px; border-bottom: 1px solid $border-light; align-items: center;
+      &:last-child { border-bottom: none; }
+    }
+    
+    .col-id { flex: 1; min-width: 100px; }
+    .col-user { flex: 2; min-width: 200px; display: flex; flex-direction: column; }
+    .col-amount { flex: 1; min-width: 100px; }
+    .col-status { flex: 1; min-width: 120px; display: flex; justify-content: flex-end; }
+    
+    .status-badge {
+      padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600;
+      &.success { background: #dcfce7; color: #166534; }
+      &.refund { background: #fee2e2; color: #b91c1c; }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .split-layout { flex-direction: column; }
+}

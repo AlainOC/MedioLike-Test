@@ -1,0 +1,194 @@
+<div class="app-layout">
+  <!-- SIDEBAR IZQUIERDO (Platzi Style: Hover para expandir) -->
+  <aside class="sidebar" 
+         [class.open]="sidebarOpen" 
+         [class.expanded]="sidebarHovered"
+         [class.pinned]="!miniSidebar"
+         (mouseenter)="sidebarHovered = true"
+         (mouseleave)="sidebarHovered = false">
+    <div class="sidebar-header">
+      <div class="text-logo-container">
+        <!-- Logo M CSS puro estilo MedioLike -->
+        <div class="css-logo-m">
+          <div class="leg left-leg"></div>
+          <div class="diag right-diag"></div>
+          <div class="diag left-diag"></div>
+          <div class="leg right-leg"></div>
+        </div>
+        <span class="logo-rest"><span class="logo-edio">edio</span><span class="logo-like">Like</span></span>
+      </div>
+      <button class="close-btn d-mobile" (click)="toggleSidebar()">
+        <i class="pi pi-times"></i>
+      </button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section"><span class="nav-text">Explorar</span></div>
+      
+      <!-- INICIO -->
+      <a [routerLink]="userRole === 'Instructor' || userRole === 'Admin' ? '/app/instructor/dashboard' : '/app/dashboard'" 
+         routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item" pTooltip="Inicio" tooltipPosition="right">
+        <i class="pi pi-home"></i> <span class="nav-text">Inicio</span>
+      </a>
+      
+      <!-- MI PERFIL -->
+      <a routerLink="/app/profile" routerLinkActive="active" class="nav-item" pTooltip="Mi Perfil" tooltipPosition="right">
+        <i class="pi pi-user"></i> <span class="nav-text">Mi Perfil</span>
+      </a>
+
+      <div class="nav-section">
+        <span class="nav-text">{{ userRole === 'Instructor' || userRole === 'Admin' ? 'CREATOR STUDIO' : 'MIS ESTUDIOS' }}</span>
+      </div>
+      
+      <!-- MIS CURSOS -->
+      <a [routerLink]="userRole === 'Instructor' || userRole === 'Admin' ? '/app/instructor/courses' : '/app/courses'" 
+         routerLinkActive="active" class="nav-item" pTooltip="Mis Cursos" tooltipPosition="right">
+        <i class="pi pi-book"></i> <span class="nav-text">Mis Cursos</span>
+      </a>
+      
+      <!-- CERTIFICADOS -->
+      <a [routerLink]="userRole === 'Instructor' || userRole === 'Admin' ? '/app/instructor/certificates' : '/app/certificates'" 
+         routerLinkActive="active" class="nav-item" pTooltip="Certificados" tooltipPosition="right">
+        <i class="pi pi-id-card"></i> <span class="nav-text">Certificados</span>
+      </a>
+      
+      <!-- EVENTOS LIVE -->
+      <a [routerLink]="userRole === 'Instructor' || userRole === 'Admin' ? '/app/instructor/live' : '/app/events'" 
+         routerLinkActive="active" class="nav-item" pTooltip="Eventos en Vivo" tooltipPosition="right">
+        <i class="pi pi-calendar"></i> <span class="nav-text">Eventos Live</span>
+      </a>
+
+      <!-- MODO ADMIN EXCLUSIVO -->
+      <ng-container *ngIf="userRole === 'Admin'">
+        <div class="nav-section"><span class="nav-text text-cyan-400">ADMINISTRACIÓN</span></div>
+        <a routerLink="/app/admin/users" routerLinkActive="active" class="nav-item" pTooltip="Usuarios" tooltipPosition="right">
+          <i class="pi pi-users"></i> <span class="nav-text">Usuarios</span>
+        </a>
+        <a routerLink="/app/admin/memberships" routerLinkActive="active" class="nav-item" pTooltip="Pagos y Membresías" tooltipPosition="right">
+          <i class="pi pi-dollar"></i> <span class="nav-text">Pagos</span>
+        </a>
+        <a routerLink="/app/admin/reports" routerLinkActive="active" class="nav-item" pTooltip="Reportes Globales" tooltipPosition="right">
+          <i class="pi pi-chart-bar"></i> <span class="nav-text">Reportes</span>
+        </a>
+      </ng-container>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button class="logout-btn" (click)="logout()" pTooltip="Cerrar Sesión" tooltipPosition="right">
+        <i class="pi pi-sign-out"></i> <span class="nav-text">Salir</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- CONTENIDO CENTRAL -->
+  <main class="main-content">
+    <!-- TOPBAR (Udemy Style: Limpio, buscador prominente) -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="hamburger-btn d-mobile" (click)="toggleSidebar()">
+          <i class="pi pi-bars"></i>
+        </button>
+        <div class="search-box d-desktop">
+          <i class="pi pi-search"></i>
+          <input type="text" placeholder="Busca cursos, certificaciones, mentores..." [(ngModel)]="globalSearchQuery" (keyup.enter)="onGlobalSearch()">
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <!-- Mostrar botón de chat solo en clases o live -->
+        <button class="icon-btn" *ngIf="showLiveChatToggle" (click)="toggleRightPanel()" title="Eventos y Comunidad">
+          <i class="pi pi-comments"></i>
+          <span class="badge">Live</span>
+        </button>
+        <!-- Notification Bell -->
+        <div class="notif-wrapper" style="position: relative;">
+          <button class="icon-btn notif-btn" (click)="toggleNotifications()">
+            <i class="pi pi-bell"></i>
+            <span class="badge" *ngIf="unreadCount > 0">{{ unreadCount }}</span>
+          </button>
+          <!-- Dropdown -->
+          <div class="notif-dropdown" *ngIf="showNotifs" style="position: absolute; top: 50px; right: 0; width: 300px; background: var(--bg-panel); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); z-index: 100; overflow: hidden;">
+            <div class="dropdown-header" style="padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center;">
+              <h4 style="margin:0; font-size: 1rem; color: var(--text-main);">Notificaciones</h4>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">{{ unreadCount }} nuevas</span>
+            </div>
+            <div class="dropdown-body" style="max-height: 300px; overflow-y: auto;">
+              <div *ngIf="notifications.length === 0" style="padding: 20px; text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+                No tienes notificaciones
+              </div>
+              <div *ngFor="let n of notifications" (click)="readNotification(n)" 
+                   style="padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: background 0.2s;"
+                   [style.background]="n.isRead ? 'transparent' : 'rgba(16, 185, 129, 0.05)'"
+                   onmouseover="this.style.background='rgba(255,255,255,0.05)'" 
+                   onmouseout="this.style.background=this.getAttribute('data-bg') || 'transparent'">
+                <p style="margin: 0; font-size: 0.9rem; color: var(--text-main);" [style.fontWeight]="n.isRead ? '400' : '600'">{{ n.message }}</p>
+                <small style="color: var(--text-muted); font-size: 0.75rem;">{{ n.createdAt | date:'short' }}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="user-menu" style="position: relative;">
+          <div class="avatar" (click)="showUserMenu = !showUserMenu">{{ userName.charAt(0) }}</div>
+          
+          <!-- User Dropdown -->
+          <div class="notif-dropdown" *ngIf="showUserMenu" style="position: absolute; top: 55px; right: 0; width: 200px; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); z-index: 100; overflow: hidden; backdrop-filter: blur(20px);">
+            <div style="padding: 15px; border-bottom: 1px solid var(--border-color); text-align: center;">
+              <div class="avatar" style="margin: 0 auto 10px; width: 60px; height: 60px; font-size: 1.8rem;">{{ userName.charAt(0) }}</div>
+              <h4 style="margin:0; font-size: 1rem; color: var(--text-main);">{{ authService.getCurrentUser()?.profile?.firstName }} {{ authService.getCurrentUser()?.profile?.lastName }}</h4>
+              <span style="font-size: 0.75rem; color: var(--accent-cyan);">{{ authService.getCurrentUser()?.role_name }}</span>
+            </div>
+            <div style="display: flex; flex-direction: column;">
+              <a routerLink="/app/profile" (click)="showUserMenu = false" style="padding: 12px 20px; color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 10px; transition: 0.2s;" onmouseover="this.style.background='var(--bg-surface-hover)'" onmouseout="this.style.background='transparent'">
+                <i class="pi pi-user"></i> Mi Perfil
+              </a>
+              <a (click)="logout()" style="padding: 12px 20px; color: var(--accent-orange); text-decoration: none; display: flex; align-items: center; gap: 10px; cursor: pointer; border-top: 1px solid var(--border-color); transition: 0.2s;" onmouseover="this.style.background='var(--glow-orange)'" onmouseout="this.style.background='transparent'">
+                <i class="pi pi-sign-out"></i> Cerrar Sesión
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ÁREA DINÁMICA -->
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+
+  <!-- PANEL DERECHO (Twitch Style: Comunidad/Live) -->
+  <aside class="right-panel" [class.open]="rightPanelOpen" *ngIf="showLiveChatToggle">
+    <div class="panel-header">
+      <h3>Comunidad & Live</h3>
+      <button class="close-btn" (click)="toggleRightPanel()">
+        <i class="pi pi-times"></i>
+      </button>
+    </div>
+    
+    <div class="panel-content">
+      <div class="live-event-card">
+        <div class="live-badge">LIVE</div>
+        <div class="event-info">
+          <h4>Q&A: Clase Actual</h4>
+          <p>Profesor en vivo</p>
+        </div>
+      </div>
+      
+      <div class="chat-section">
+        <div class="chat-header">Chat del Curso</div>
+        <div class="chat-messages">
+          <div class="msg" *ngFor="let msg of chatMessages">
+            <span class="author">{{ msg.user?.profile?.firstName || 'Usuario' }}:</span> {{ msg.text }}
+          </div>
+        </div>
+        <div class="chat-input">
+          <input type="text" placeholder="Escribe algo..." [(ngModel)]="newChatMessage" (keyup.enter)="sendChatMessage()">
+          <button (click)="sendChatMessage()"><i class="pi pi-send"></i></button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Overlay para móviles -->
+  <div class="sidebar-overlay" *ngIf="sidebarOpen" (click)="toggleSidebar()"></div>
+</div>

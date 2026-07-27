@@ -1,0 +1,329 @@
+<div class="course-detail-platzi">
+
+  <!-- Navbar -->
+  <nav class="navbar-dark">
+    <div class="nav-left">
+      <div class="logo" routerLink="/">
+        <i class="pi pi-bolt logo-icon"></i> <span class="logo-text">Mediolike</span>
+      </div>
+      <div class="search-bar">
+        <i class="pi pi-search"></i>
+        <input type="text" placeholder="¿Qué quieres aprender?">
+      </div>
+    </div>
+    <div class="nav-links">
+      <a routerLink="/app/courses">Cursos</a>
+      <a href="javascript:void(0)">Empresas</a>
+      <a href="javascript:void(0)">Blog</a>
+      <a routerLink="/app/live">Live</a>
+      <a routerLink="/precios">Precios</a>
+      <button class="btn-acceder" routerLink="/login">Acceder</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <div class="hero-content">
+      <div class="badge-icon"><i class="pi pi-code"></i></div>
+      <h1>{{ course.title }}</h1>
+      <div class="meta-reviews">
+        <div class="stars">
+          <i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i>
+        </div>
+        <span class="rating-text">4.7</span>
+        <span class="review-count">· 380 opiniones</span>
+      </div>
+      <p class="publish-date">Publicado el 23 de mayo de 2025</p>
+      
+      <div class="tags">
+        <span class="tag"><i class="pi pi-chart-bar"></i> Nivel Básico</span>
+        <span class="tag"><i class="pi pi-play-circle"></i> 24 clases</span>
+        <span class="tag"><i class="pi pi-clock"></i> 2 horas de contenido</span>
+        <span class="tag"><i class="pi pi-bolt"></i> 12 horas de práctica</span>
+      </div>
+
+      <p class="description">{{ course.description }} Aprende los conceptos esenciales para diseñar sistemas de software estructurados, comprendiendo el rol del arquitecto y los principales estilos.</p>
+    </div>
+  </div>
+
+  <!-- Main Grid Layout -->
+  <div class="layout-grid">
+    
+    <!-- Left Column (Content) -->
+    <div class="content-col">
+      
+      <!-- Temario -->
+      <div class="syllabus-section">
+        <div class="timeline" *ngFor="let mod of course.syllabus; let i = index">
+          <div class="timeline-title">{{ mod.module }}</div>
+          
+          <div class="timeline-item" *ngFor="let lesson of mod.lessons; let j = index">
+            <div class="timeline-marker">
+              <span class="number">{{ (i * 10) + (j + 1) }}</span>
+            </div>
+            <div class="timeline-content">
+              <div class="lesson-card">
+                <div class="lesson-thumb">
+                  <i class="pi" [ngClass]="(i === 0 && j === 0) ? 'pi-play' : 'pi-lock'"></i>
+                </div>
+                <div class="lesson-info">
+                  <h4>{{ lesson.title ? lesson.title : lesson }}</h4>
+                  <span>0{{ j + 2 }}:{{ j * 12 + 15 }} min</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conoce quien enseña -->
+      <div class="instructor-bio-section">
+        <div class="section-badge"><i class="pi pi-id-card"></i> Profes del curso</div>
+        <h2>Conoce quién enseña el curso</h2>
+        
+        <div class="instructor-card">
+          <img src="https://via.placeholder.com/150x150/1e293b/ffffff?text=Profe" alt="Instructor">
+          <div class="bio-info">
+            <h3>{{ course.instructor }}</h3>
+            <p class="roles">Software Architect, Data Architect, Software Developer, Technical Writer, Startup founder.</p>
+            <p class="desc">Ingeniero de Software con más de 10 años de experiencia escalando arquitecturas de alto rendimiento.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Opiniones -->
+      <div class="reviews-section">
+        <div class="section-badge"><i class="pi pi-heart"></i> Opiniones del curso</div>
+        <div class="rating-header">
+          <div class="stars">
+            <i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i>
+          </div>
+          <span class="rating-number">4.7</span>
+          <span class="review-count">· 380 opiniones</span>
+        </div>
+
+        <div class="reviews-grid">
+          <div class="review-card" *ngFor="let r of [1,2,3,4]">
+            <div class="review-header">
+              <div class="avatar-circle">U{{r}}</div>
+              <div class="user-info">
+                <h4>Usuario Ejemplo {{r}}</h4>
+                <div class="user-stars">
+                  <i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i>
+                </div>
+              </div>
+            </div>
+            <p class="review-body">Excelentes conceptos, el curso deja muy en claro el punto de vista arquitectónico y las responsabilidades del rol. Nuevazo.</p>
+          </div>
+        </div>
+        <a class="view-all-reviews">Ver las 380 opiniones &rarr;</a>
+      </div>
+
+      <!-- Rutas de Aprendizaje -->
+      <div class="paths-section">
+        <div class="section-badge"><i class="pi pi-compass"></i> Eleva tu aprendizaje</div>
+        <h2>Este curso es parte de estas rutas de aprendizaje</h2>
+        
+        <div class="paths-grid">
+          <div class="path-card" *ngFor="let p of [1,2,3]">
+            <div class="path-header">
+              <span class="path-badge">Ruta</span>
+              <div class="course-icons">
+                <i class="pi pi-circle-fill" style="color: #00e676;"></i>
+                <i class="pi pi-circle-fill" style="color: #00e676;"></i>
+              </div>
+              <span class="course-count">13 Cursos</span>
+            </div>
+            <h3>Desarrollo Backend Avanzado</h3>
+            <div class="path-tags">
+              <span class="pt">52 horas</span>
+              <span class="pt">14 Profes</span>
+            </div>
+            <p>Aprende de manera fácil, eficiente y de alto rendimiento.</p>
+            <a class="view-path">Ver ruta &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comunidad -->
+      <div class="community-section">
+        <div class="section-badge"><i class="pi pi-users"></i> Comunidad</div>
+        <h2>La comunidad es nuestro super poder</h2>
+        <p>Contenido adicional creado por la comunidad que nunca para de aprender.</p>
+        
+        <div class="tutorial-box">
+          <button class="btn-empieza-comunidad"><i class="pi pi-file"></i> Empieza ya</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right Column (Sticky Sidebar) -->
+    <div class="sidebar-col">
+      <div class="floating-checkout-card">
+        <div class="card-hero">
+          <div class="card-logo">
+            <i class="pi pi-bolt"></i> Mediolike
+          </div>
+          <div class="card-course-title">Curso de <br><b>{{ course.title }}</b></div>
+          <div class="card-instructor">Por {{ course.instructor }}</div>
+          <img src="https://via.placeholder.com/200x250/1e293b/ffffff?text=Profe" alt="Instructor" class="instructor-floating-img">
+          <div class="play-overlay"><i class="pi pi-play"></i></div>
+        <div class="purchase-box">
+          <div class="price-tag">${{ course.price }} MXN</div>
+          <button class="btn btn-primary btn-block" (click)="enroll()" [disabled]="isProcessingPayment">
+            <span *ngIf="isProcessingPayment"><i class="pi pi-spin pi-spinner"></i> Procesando...</span>
+            <span *ngIf="!isProcessingPayment && !isEnrolled">Comprar Curso</span>
+            <span *ngIf="!isProcessingPayment && isEnrolled">Ir al Curso</span>
+          </button>
+          <p class="guarantee">Garantía de 30 días o te devolvemos tu dinero.</p>
+        </div>
+        
+        <div class="card-body">
+          <div class="unlock-info">
+            <div class="go-icons"><i class="pi pi-unlock"></i></div>
+            <p>Accede a este y a más de <b>2000 cursos profesionales</b> adquiriendo un plan.</p>
+          </div>
+          
+          <div class="promo-box">
+            <div class="promo-header">Aprovecha el precio especial</div>
+            <div class="promo-timer">Termina en: <b>11 hrs 49 min 21 seg</b></div>
+            <div class="promo-plan-info">
+              <h4>Plan Expert</h4>
+              <p>Un año de acceso con cursos ilimitados</p>
+              <div class="pricing">
+                <span class="old-price">Antes $4,990</span>
+                <div class="new-price">
+                  <i class="pi pi-globe"></i> <span>$3,999/año</span> <i class="pi pi-tag text-cyan"></i>
+                </div>
+                <div class="savings">Ahorras $991</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div> <!-- End Layout Grid -->
+
+  <!-- Embedded Pricing -->
+  <div class="embedded-pricing">
+    <h2>Elige el plan ideal para ti</h2>
+    <div class="pricing-toggle">
+      <button class="active">Personas</button>
+      <button>Empresas</button>
+    </div>
+    
+    <div class="pricing-cards-container">
+      <div class="pricing-card basic">
+        <div class="card-header">
+          <h3>Plan Basic</h3>
+          <span class="badge-period">Mensual</span>
+        </div>
+        <div class="price"><h4>🇲🇽 $849/mes</h4></div>
+        <ul class="features">
+          <li><i class="pi pi-check text-cyan"></i> Contenido profesional actualizado</li>
+          <li><i class="pi pi-times text-gray"></i> <span class="disabled-text">Certificados físicos</span></li>
+        </ul>
+      </div>
+
+      <div class="pricing-card expert recommended">
+        <div class="special-badge">PRECIO ESPECIAL</div>
+        <div class="card-header">
+          <h3>Plan Expert</h3>
+          <span class="badge-period">Anual</span>
+        </div>
+        <div class="price"><h4>🇲🇽 $3,999/año <i class="pi pi-tag text-cyan"></i></h4></div>
+        <p class="savings">Antes <del>$4,990</del> <span class="text-cyan">Ahorras $991</span></p>
+        <ul class="features">
+          <li><i class="pi pi-check text-cyan"></i> Contenido profesional actualizado</li>
+          <li><i class="pi pi-check text-cyan"></i> Certificados físicos</li>
+        </ul>
+        <button class="btn-cyan-full">Suscríbete a Plan Expert</button>
+      </div>
+
+      <div class="pricing-card expert-duo recommended">
+        <div class="special-badge">PRECIO ESPECIAL</div>
+        <div class="card-header">
+          <h3>Plan Expert Duo</h3>
+          <span class="badge-period">Anual</span>
+        </div>
+        <div class="price"><h4>🇲🇽 $5,281/año <i class="pi pi-tag text-cyan"></i></h4></div>
+        <p class="savings">Antes <del>$6,590</del> <span class="text-cyan">Ahorras $1,309</span></p>
+        <ul class="features">
+          <li><i class="pi pi-check text-cyan"></i> Contenido profesional actualizado</li>
+          <li><i class="pi pi-check text-cyan"></i> Certificados físicos</li>
+        </ul>
+        <button class="btn-cyan-full">Suscríbete a Plan Expert Duo</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mega Footer Global -->
+  <footer class="mega-footer">
+    <div class="footer-links-grid">
+      <div class="footer-col brand-col">
+        <div class="logo"><i class="pi pi-bolt"></i> Mediolike</div>
+      </div>
+      <div class="footer-col">
+        <h4>Escuelas</h4>
+        <a>Desarrollo Web</a>
+        <a>Marketing Digital</a>
+        <a>Ciberseguridad</a>
+        <a>Diseño de Producto y UX</a>
+        <a>Desarrollo Móvil</a>
+        <a>Programación</a>
+      </div>
+      <div class="footer-col">
+        <h4><br></h4>
+        <a>English Academy</a>
+        <a>Inteligencia Artificial y Data Science</a>
+        <a>Liderazgo y Habilidades Blandas</a>
+        <a>Contenido Audiovisual</a>
+        <a>Diseño Gráfico</a>
+        <a>Negocios</a>
+      </div>
+      <div class="footer-col">
+        <h4>Comunidad</h4>
+        <a>Business</a>
+        <a>Live Classes</a>
+        <a>Lanzamientos</a>
+        <a>Executive Program</a>
+        <a>Trabaja con nosotros</a>
+        <a>Podcast</a>
+      </div>
+      <div class="footer-col">
+        <h4>Soporte</h4>
+        <a>Preguntas Frecuentes</a>
+        <a>Contáctanos</a>
+        <br>
+        <h4>Legal</h4>
+        <a>Términos y Condiciones</a>
+        <a>Privacidad</a>
+        <a>Tyc promociones</a>
+      </div>
+    </div>
+
+    <div class="footer-recognitions">
+      <div class="rec-title">Reconocimientos</div>
+      <div class="rec-logos">
+        <div class="logo-box"><h3>TIME</h3><p>Top 40 Mejores EdTech<br>del mundo · 2024</p></div>
+        <div class="logo-box"><h3>Y Combinator</h3><p>Primera Startup Latina<br>admitida en YC · 2014</p></div>
+        <div class="logo-box"><h3>EY</h3><p>Primera Startup EdTech<br>· 2018</p></div>
+        <div class="logo-box"><h3>Forbes</h3><p>CEO Mejor<br>Emprendedor del año · 2024</p></div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="latam">De LATAM con <i class="pi pi-heart-fill text-cyan"></i> para el mundo</div>
+      <div class="socials">
+        <a>Youtube <i class="pi pi-youtube"></i></a>
+        <a>Instagram <i class="pi pi-instagram"></i></a>
+        <a>LinkedIn <i class="pi pi-linkedin"></i></a>
+        <a>Facebook <i class="pi pi-facebook"></i></a>
+        <a>X (Twitter) <i class="pi pi-twitter"></i></a>
+      </div>
+    </div>
+  </footer>
+
+</div>

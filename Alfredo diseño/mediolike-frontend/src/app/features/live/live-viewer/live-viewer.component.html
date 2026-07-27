@@ -1,0 +1,115 @@
+<div class="live-viewer-wrap">
+
+  <!-- ESTADO: CARGANDO -->
+  <div class="state-screen" *ngIf="viewState === 'loading'">
+    <i class="pi pi-spin pi-spinner" style="font-size: 3rem; color: #22d3ee;"></i>
+    <p>Cargando evento...</p>
+  </div>
+
+  <!-- ESTADO: NO ENCONTRADO -->
+  <div class="state-screen" *ngIf="viewState === 'notfound'">
+    <i class="pi pi-exclamation-triangle" style="font-size: 3rem; color: #f97316;"></i>
+    <h2>Evento no encontrado</h2>
+    <p>El enlace de invitación no es válido o el evento fue eliminado.</p>
+    <a routerLink="/app/dashboard" class="btn-home">Ir al Inicio</a>
+  </div>
+
+  <!-- ESTADO: PROGRAMADO (Aún no ha iniciado) -->
+  <div class="state-screen" *ngIf="viewState === 'scheduled'">
+    <div class="state-icon scheduled">
+      <i class="pi pi-calendar"></i>
+    </div>
+    <h2>El evento aún no ha comenzado</h2>
+    <p *ngIf="event">Este live está programado para el <strong>{{ event.date }}</strong> a las <strong>{{ event.time }}</strong>.</p>
+    <p class="muted-hint">Vuelve en la hora indicada. El instructor iniciará la transmisión y podrás conectarte automáticamente.</p>
+    <a routerLink="/app/dashboard" class="btn-home">Volver al Inicio</a>
+  </div>
+
+  <!-- ESTADO: TERMINADO -->
+  <div class="state-screen" *ngIf="viewState === 'ended'">
+    <div class="state-icon ended">
+      <i class="pi pi-lock"></i>
+    </div>
+    <h2>Este evento ha concluido</h2>
+    <p *ngIf="event">El evento <strong>{{ event.title }}</strong> ha finalizado y está archivado.</p>
+    <p class="muted-hint">Ya no es posible unirse a esta sesión. Consulta con tu instructor si habrá una repetición disponible.</p>
+    <a routerLink="/app/events" class="btn-home">Ver más Eventos</a>
+  </div>
+
+  <!-- ESTADO: EN VIVO -->
+  <div class="live-layout" *ngIf="viewState === 'live'">
+
+    <nav class="viewer-topbar">
+      <div class="topbar-left">
+        <i class="pi pi-bolt" style="color: #f97316;"></i>
+        <span class="logo-text">Medio<span style="color:#22d3ee">Like</span></span>
+      </div>
+      <div class="live-info" *ngIf="event">
+        <div class="live-pill"><span class="dot"></span> EN VIVO</div>
+        <h3>{{ event.title }}</h3>
+      </div>
+      <div class="topbar-right">
+        <a routerLink="/app/dashboard" class="btn-leave">
+          <i class="pi pi-sign-out"></i> Salir
+        </a>
+      </div>
+    </nav>
+
+    <div class="live-content">
+
+      <!-- VIDEO COLUMNA -->
+      <div class="video-col">
+        <div class="video-player">
+          <div class="stream-placeholder">
+            <div class="pulse-ring"></div>
+            <i class="pi pi-video" style="font-size:3rem; color: rgba(255,255,255,0.2);"></i>
+            <p style="color: rgba(255,255,255,0.3); margin: 10px 0 0;">Transmisión en curso...</p>
+          </div>
+          <div class="live-overlay-badge">🔴 EN VIVO</div>
+        </div>
+
+        <!-- Promo -->
+        <div class="promo-bar">
+          <span class="promo-tag">🎓 Oferta Especial</span>
+          <span>Accede a todos los cursos de este instructor por un precio especial este mes.</span>
+          <a routerLink="/precios" class="promo-btn">Ver Precios <i class="pi pi-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- CHAT COLUMNA -->
+      <div class="chat-col">
+        <div class="chat-header">
+          <i class="pi pi-comments"></i>
+          <span>Chat del Live</span>
+          <span class="viewers-count"><i class="pi pi-users"></i> 1</span>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+          <div class="chat-rules" *ngIf="chatMessages.length === 0">
+            <div class="rules-title"><i class="pi pi-bolt" style="color:#f97316;"></i> Reglas del Chat</div>
+            <ul>
+              <li>Sé respetuoso y evita el spam</li>
+              <li>No se permiten comentarios ofensivos</li>
+              <li>Las preguntas claras serán respondidas primero</li>
+            </ul>
+          </div>
+          <div class="chat-msg" *ngFor="let msg of chatMessages">
+            <span class="msg-user">{{ msg.user }}:</span>
+            <span class="msg-text">{{ msg.text }}</span>
+          </div>
+        </div>
+
+        <div class="chat-input-bar">
+          <input
+            type="text"
+            placeholder="Escribe tu mensaje..."
+            [(ngModel)]="newChatMessage"
+            (keyup.enter)="sendMessage()"
+          >
+          <button (click)="sendMessage()"><i class="pi pi-send"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

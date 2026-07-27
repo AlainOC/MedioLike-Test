@@ -1,0 +1,99 @@
+<div class="course-builder">
+  <div class="header">
+    <a routerLink="/app/instructor/dashboard" class="back-link"><i class="pi pi-arrow-left"></i> Volver</a>
+    <h1>Creador de Cursos</h1>
+    <div class="stepper">
+      <div class="step" [class.active]="currentStep >= 1">1. Detalles Básicos</div>
+      <div class="step-line" [class.active]="currentStep >= 2"></div>
+      <div class="step" [class.active]="currentStep >= 2">2. Temario y Contenido</div>
+      <div class="step-line" [class.active]="currentStep >= 3"></div>
+      <div class="step" [class.active]="currentStep >= 3">3. Precios y Publicación</div>
+    </div>
+  </div>
+
+  <div class="wizard-content">
+    
+    <!-- PASO 1: Detalles Básicos -->
+    <div class="step-pane" *ngIf="currentStep === 1">
+      <h2>Detalles Básicos</h2>
+      <div class="form-group">
+        <label>Título del Curso</label>
+        <input type="text" [(ngModel)]="courseData.title" placeholder="Ej: Master en Node.js">
+      </div>
+      <div class="form-group">
+        <label>Categoría</label>
+        <select [(ngModel)]="courseData.category">
+          <option value="">Selecciona una categoría...</option>
+          <option value="Programación">Programación</option>
+          <option value="Diseño">Diseño</option>
+          <option value="Marketing">Marketing</option>
+          <option value="Negocios">Negocios</option>
+          <option value="Finanzas">Finanzas y Contabilidad</option>
+          <option value="Desarrollo Personal">Desarrollo Personal</option>
+          <option value="Fotografía y Video">Fotografía y Video</option>
+          <option value="Música">Música</option>
+          <option value="Salud y Fitness">Salud y Fitness</option>
+          <option value="Idiomas">Idiomas</option>
+          <option value="Tecnología">Informática y Software</option>
+          <option value="Enseñanza">Enseñanza y Académica</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Descripción Corta</label>
+        <textarea [(ngModel)]="courseData.description" cdkTextareaAutosize cdkAutosizeMinRows="4"></textarea>
+      </div>
+    </div>
+
+    <!-- PASO 2: Temario -->
+    <div class="step-pane" *ngIf="currentStep === 2">
+      <div class="section-title">
+        <h2>Temario del Curso</h2>
+        <button class="btn-outline" (click)="addModule()"><i class="pi pi-plus"></i> Añadir Módulo</button>
+      </div>
+      
+      <div class="module-card" *ngFor="let mod of modules; let i = index">
+        <div class="module-header">
+          <input type="text" [(ngModel)]="mod.title" class="title-input">
+          <button class="btn-icon text-danger" (click)="removeModule(i)"><i class="pi pi-trash"></i></button>
+        </div>
+        
+        <div class="lesson-list">
+          <div class="lesson-item" *ngFor="let lesson of mod.lessons; let j = index">
+            <i class="pi pi-video"></i>
+            <input type="text" [(ngModel)]="lesson.title" class="lesson-input">
+            
+            <span class="file-name" *ngIf="$any(lesson).fileName">{{ $any(lesson).fileName }}</span>
+            <button class="btn-icon" (click)="fileInput.click()" *ngIf="!$any(lesson).fileName"><i class="pi pi-cloud-upload"></i> Subir Video</button>
+            <button class="btn-icon" (click)="fileInput.click()" *ngIf="$any(lesson).fileName" title="Cambiar Video"><i class="pi pi-sync"></i></button>
+            <input type="file" #fileInput style="display: none;" accept="video/*" (change)="onFileSelected($event, i, j)">
+            
+            <button class="btn-icon text-danger" (click)="removeLesson(i, j)" title="Eliminar lección"><i class="pi pi-trash"></i></button>
+          </div>
+          <button class="btn-text mt-2" (click)="addLesson(i)"><i class="pi pi-plus"></i> Añadir Lección</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASO 3: Precios -->
+    <div class="step-pane" *ngIf="currentStep === 3">
+      <h2>Precios y Monetización</h2>
+      <div class="form-group">
+        <label>Precio de Venta (USD)</label>
+        <div class="price-input-wrapper">
+          <span class="currency">$</span>
+          <input type="number" [(ngModel)]="courseData.price" placeholder="0.00">
+        </div>
+        <p class="hint">Recuerda que la plataforma retiene una comisión por transacción (RN-015).</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="wizard-footer">
+    <button class="btn-secondary" *ngIf="currentStep > 1" (click)="prevStep()">Anterior</button>
+    <button class="btn-outline" (click)="saveProgress()">Guardar</button>
+    <div class="spacer"></div>
+    <button class="btn-primary" *ngIf="currentStep < 3" (click)="nextStep()">Siguiente Paso</button>
+    <button class="btn-success" *ngIf="currentStep === 3" (click)="saveCourse()">{{ isEditMode ? 'Finalizar Edición' : 'Publicar Curso' }}</button>
+  </div>
+</div>

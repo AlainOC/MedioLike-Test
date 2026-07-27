@@ -1,0 +1,30 @@
+<div class="premium-dashboard">
+  <section class="premium-section">
+    <div class="section-header">
+      <h2>Mis Certificados</h2>
+    </div>
+    
+    <ng-container *ngIf="certificates$ | async as certificates">
+      <!-- Empty State -->
+      <div class="empty-state glass-card" *ngIf="certificates.length === 0" style="text-align: center; padding: 40px; margin-bottom: 20px;">
+        <i class="pi pi-verified" style="font-size: 3rem; color: #64748b; margin-bottom: 15px;"></i>
+        <h3 style="margin-bottom: 10px;">Aún no tienes certificados</h3>
+        <p style="color: #94a3b8; margin-bottom: 20px;">Completa el 100% de un curso para desbloquear tu certificado oficial.</p>
+        <button class="btn-primary" routerLink="/app/dashboard">Ir al Dashboard</button>
+      </div>
+
+      <!-- Certificates Grid -->
+      <div class="grid" *ngIf="certificates.length > 0" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;">
+        <div class="glass-card suggestion-card" *ngFor="let cert of certificates" (click)="viewCertificate(cert.courseId)">
+          <img [src]="cert.course?.image || 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800'" alt="Course Image" class="card-thumb" style="filter: grayscale(20%);">
+          <div class="card-info" style="text-align: center; padding: 20px;">
+            <i class="pi pi-verified" style="font-size: 2rem; color: var(--accent-orange); margin-bottom: 10px; text-shadow: 0 0 10px var(--glow-orange);"></i>
+            <h3 style="margin-bottom: 5px;">{{ cert.course?.title || 'Curso Completado' }}</h3>
+            <p class="instructor" style="margin-bottom: 15px;"><i class="pi pi-check-circle"></i> 100% Completado</p>
+            <button class="btn-outline" style="width: 100%;">Ver Certificado</button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </section>
+</div>

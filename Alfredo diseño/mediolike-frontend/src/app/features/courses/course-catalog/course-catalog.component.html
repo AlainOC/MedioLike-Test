@@ -1,0 +1,51 @@
+<div class="catalog-premium">
+  <!-- Contenido -->
+  <div class="catalog-content">
+    <div class="header-section">
+      <h1>Explora nuestro<br>catálogo de élite</h1>
+      <p>Domina las habilidades del futuro con cursos de alta calidad. Aprende a tu propio ritmo con la mejor tecnología.</p>
+
+      <div class="filters-container">
+        <div class="local-search-bar">
+          <i class="pi pi-search"></i>
+          <input type="text" placeholder="Busca cursos por nombre o tecnología..." [(ngModel)]="searchTerm" (input)="filterCourses()">
+        </div>
+        <div class="filter-dropdown">
+          <select [(ngModel)]="selectedCategory" (change)="filterCourses()">
+            <option value="all">Todas las categorías</option>
+            <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name }}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resultados -->
+    <div class="course-category-section">
+      <h2>Cursos disponibles</h2>
+      <h3>Encuentra el camino perfecto para ti</h3>
+
+      <div class="courses-grid-horizontal" *ngIf="filteredCourses.length > 0">
+        <div class="course-card-premium" *ngFor="let course of filteredCourses" (click)="goToCourse(course.id)">
+          <div class="course-thumb">
+            <img [src]="course.image" [alt]="course.title">
+          </div>
+          <div class="course-info">
+            <div class="title-row">
+              <i class="pi pi-verified badge-icon"></i>
+              <h4>{{ course.title }}</h4>
+            </div>
+            <div class="meta-row">
+              <span class="instructor"><i class="pi pi-user" style="font-size: 0.8rem"></i> {{ course.instructor }}</span>
+              <span class="level"><i class="pi pi-chart-bar"></i> {{ course.level }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="no-results" *ngIf="filteredCourses.length === 0">
+        <i class="pi pi-inbox"></i>
+        <p>No se encontraron cursos con tu búsqueda.</p>
+      </div>
+    </div>
+  </div>
+</div>

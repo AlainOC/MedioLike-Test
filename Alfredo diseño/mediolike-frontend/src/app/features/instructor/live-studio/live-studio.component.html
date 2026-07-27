@@ -1,0 +1,120 @@
+<div class="live-studio">
+
+  <!-- TOPBAR DEL STUDIO -->
+  <header class="studio-topbar">
+    <div class="studio-branding">
+      <i class="pi pi-bolt"></i>
+      <span class="logo-text">Medio<span class="logo-like">Like</span> Studio</span>
+    </div>
+    <div class="event-info-bar" *ngIf="event">
+      <h2>{{ event.title }}</h2>
+    </div>
+    <div class="topbar-actions">
+      <!-- LIVE BADGE -->
+      <div class="live-badge-pill" [class.active]="isLive">
+        <span class="live-dot"></span>
+        {{ isLive ? 'EN VIVO' : 'PREPARANDO' }}
+      </div>
+      <!-- COPY INVITE -->
+      <button class="btn-invite" (click)="copyInviteLink()" title="Copiar enlace de invitación">
+        <i class="pi pi-link"></i> Copiar Invitación
+      </button>
+      <!-- END -->
+      <button class="btn-end" (click)="endBroadcast()" *ngIf="isLive">
+        <i class="pi pi-stop-circle"></i> Terminar Live
+      </button>
+      <a routerLink="/app/instructor/live" class="btn-back-text" *ngIf="!isLive">
+        <i class="pi pi-arrow-left"></i> Salir
+      </a>
+    </div>
+  </header>
+
+  <!-- BODY: VIDEO + SIDEBAR -->
+  <div class="studio-body">
+
+    <!-- AREA DE CAMARA -->
+    <div class="camera-area">
+
+      <!-- VIDEO STREAM -->
+      <div class="video-wrapper" [class.camera-off]="!isCameraOn">
+        <video #localVideo autoplay muted playsinline class="video-feed"></video>
+
+        <div class="camera-off-overlay" *ngIf="!isCameraOn">
+          <i class="pi pi-eye-slash"></i>
+          <p>Cámara apagada</p>
+        </div>
+
+        <!-- Watermark -->
+        <div class="video-watermark">
+          <i class="pi pi-bolt"></i> MedioLike
+        </div>
+      </div>
+
+      <!-- CONTROLS BAR -->
+      <div class="controls-bar">
+        <!-- MIC -->
+        <button class="control-btn" (click)="toggleMic()" [class.off]="!isMicOn" [title]="isMicOn ? 'Mutear micrófono' : 'Activar micrófono'">
+          <i [class]="isMicOn ? 'pi pi-microphone' : 'pi pi-microphone-slash'"></i>
+          <span>{{ isMicOn ? 'Mutear' : 'Desmutear' }}</span>
+        </button>
+
+        <!-- CAMERA -->
+        <button class="control-btn" (click)="toggleCamera()" [class.off]="!isCameraOn" [title]="isCameraOn ? 'Apagar cámara' : 'Encender cámara'">
+          <i [class]="isCameraOn ? 'pi pi-video' : 'pi pi-eye-slash'"></i>
+          <span>{{ isCameraOn ? 'Apagar Cam' : 'Encender Cam' }}</span>
+        </button>
+
+        <div class="controls-spacer"></div>
+
+        <!-- GO LIVE -->
+        <button class="btn-go-live" (click)="startBroadcast()" *ngIf="!isLive">
+          <i class="pi pi-circle-fill"></i> Iniciar Transmisión
+        </button>
+        <button class="btn-end-live" (click)="endBroadcast()" *ngIf="isLive">
+          <i class="pi pi-stop-circle"></i> Finalizar
+        </button>
+      </div>
+    </div>
+
+    <!-- PANEL DERECHO: INFO + CHAT SIMULADO -->
+    <aside class="studio-sidebar">
+      <div class="sidebar-section">
+        <h3 class="section-title"><i class="pi pi-info-circle"></i> Detalles del Evento</h3>
+        <div class="event-detail" *ngIf="event">
+          <p><strong>Título:</strong> {{ event.title }}</p>
+          <p><strong>Fecha:</strong> {{ event.date }} &mdash; {{ event.time }}</p>
+          <p><strong>Estado:</strong>
+            <span class="state-chip" [class.live]="isLive" [class.scheduled]="!isLive">
+              {{ isLive ? '🔴 En Vivo' : '🟡 Preparando' }}
+            </span>
+          </p>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h3 class="section-title"><i class="pi pi-link"></i> Enlace de Invitación</h3>
+        <div class="invite-box" *ngIf="event">
+          <code class="invite-link">{{ event.inviteLink }}</code>
+          <button class="btn-copy-sm" (click)="copyInviteLink()">
+            <i class="pi pi-copy"></i> Copiar
+          </button>
+        </div>
+        <p class="invite-hint">Comparte este enlace con tus alumnos. Solo funciona mientras el evento esté activo.</p>
+      </div>
+
+      <div class="sidebar-section chat-section">
+        <h3 class="section-title"><i class="pi pi-comments"></i> Chat en Vivo</h3>
+        <div class="chat-messages">
+          <div class="chat-placeholder" *ngIf="isLive">
+            <i class="pi pi-spin pi-spinner"></i>
+            <p>Esperando mensajes de los estudiantes...</p>
+          </div>
+          <div class="chat-placeholder" *ngIf="!isLive">
+            <i class="pi pi-lock"></i>
+            <p>El chat se activa cuando inicies la transmisión.</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>

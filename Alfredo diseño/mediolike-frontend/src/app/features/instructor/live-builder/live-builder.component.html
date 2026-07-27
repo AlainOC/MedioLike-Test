@@ -1,0 +1,79 @@
+<div class="live-builder">
+  <div class="header">
+    <a routerLink="/app/instructor/dashboard" class="back-link"><i class="pi pi-arrow-left"></i> Volver al Panel</a>
+    <h1>Eventos en Vivo</h1>
+    <p>Conecta con tus estudiantes en tiempo real a través de transmisiones en directo.</p>
+  </div>
+
+  <!-- VISTA: LISTA DE EVENTOS -->
+  <div *ngIf="viewMode === 'list'" class="events-list-container">
+    <div class="actions-bar" style="display: flex; justify-content: flex-end; margin-bottom: 20px;">
+      <button class="btn-primary" (click)="viewMode = 'builder'"><i class="pi pi-plus"></i> Programar Nuevo Evento</button>
+    </div>
+
+    <div class="events-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+      <div class="event-card" *ngFor="let evt of myEvents$ | async" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+        <h3 style="margin-top: 0; color: var(--text-main);">{{ evt.title }}</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 10px;">
+          <i class="pi pi-calendar"></i> {{ evt.date }} &nbsp;|&nbsp; <i class="pi pi-clock"></i> {{ evt.time }}
+        </p>
+        <span class="status-badge" [ngClass]="evt.status" style="display: inline-block; padding: 4px 8px; border-radius: 6px; font-size: 0.8rem; font-weight: bold; margin-bottom: 15px;"
+              [style.background]="evt.status === 'live' ? 'var(--accent-orange)' : (evt.status === 'ended' ? 'var(--text-muted)' : 'var(--accent-cyan)')"
+              [style.color]="'white'">
+          {{ evt.status | uppercase }}
+        </span>
+        
+        <p style="font-size: 0.85rem; color: var(--text-muted);">{{ evt.description }}</p>
+
+        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 10px;">
+          <button class="btn-primary" (click)="startLive(evt.id)" *ngIf="evt.status !== 'ended'" style="width: 100%; justify-content: center;">
+            <i class="pi pi-video"></i> {{ evt.status === 'live' ? 'Reanudar Transmisión' : 'Iniciar Transmisión (Studio)' }}
+          </button>
+          <button class="btn-secondary" *ngIf="evt.status === 'ended'" disabled style="width: 100%; justify-content: center; opacity: 0.5;">
+            Evento Finalizado
+          </button>
+        </div>
+      </div>
+      
+      <div *ngIf="(myEvents$ | async)?.length === 0" style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--text-muted);">
+        No tienes eventos programados.
+      </div>
+    </div>
+  </div>
+
+  <!-- VISTA: FORMULARIO BUILDER -->
+  <div *ngIf="viewMode === 'builder'" class="form-container">
+    <div class="info-alert">
+      <i class="pi pi-info-circle"></i>
+      <span>Tendrás acceso al Creator Studio nativo donde podrás controlar tu cámara, micrófono y obtener el enlace de invitación.</span>
+    </div>
+
+    <form (ngSubmit)="scheduleEvent()">
+      <div class="form-group">
+        <label>Título del Evento</label>
+        <input type="text" [(ngModel)]="eventData.title" name="title" placeholder="Ej: Q&A - Dudas sobre el Proyecto Final" required>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>Fecha</label>
+          <input type="date" [(ngModel)]="eventData.date" name="date" required>
+        </div>
+        <div class="form-group">
+          <label>Hora</label>
+          <input type="time" [(ngModel)]="eventData.time" name="time" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Descripción Corta</label>
+        <textarea [(ngModel)]="eventData.description" name="description" rows="3" placeholder="¿De qué tratará la sesión?"></textarea>
+      </div>
+
+      <div class="form-actions" style="margin-top: 30px;">
+        <button type="button" class="btn-secondary" (click)="viewMode = 'list'">Cancelar</button>
+        <button type="submit" class="btn-primary">Programar Evento</button>
+      </div>
+    </form>
+  </div>
+</div>
