@@ -1,0 +1,212 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Role {
+  id          Int          @id @default(autoincrement())
+  name        String       @unique
+  description String?
+  users       User[]
+  permissions Permission[] @relation("RolePermissions")
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model Permission {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  description String?
+  roles       Role[]   @relation("RolePermissions")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model User {
+  id           Int           @id @default(autoincrement())
+  email        String        @unique
+  password     String
+  roleId       Int
+  role         Role          @relation(fields: [roleId], references: [id])
+  profile      Profile?
+  settings     Setting[]
+  courses      Course[]      @relation("InstructorCourses")
+  enrollments  Enrollment[]
+  comments     Comment[]
+  events       LiveEvent[]   @relation("InstructorEvents")
+  quizAttempts QuizAttempt[] @relation("UserQuizAttempts")
+  notifications Notification[] @relation("UserNotifications")
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model Profile {
+  id        Int      @id @default(autoincrement())
+  firstName String
+  lastName  String
+  avatarUrl String?
+  bio       String?
+  userId    Int      @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Setting {
+  id        Int      @id @default(autoincrement())
+  key       String
+  value     String
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, key])
+}
+
+model Category {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  description String?
+  courses     Course[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Course {
+  id           Int          @id @default(autoincrement())
+  title        String
+  description  String?      @db.Text
+  price        Float        @default(0)
+  image        String?
+  status       String       @default("Borrador")
+  instructorId Int
+  instructor   User         @relation("InstructorCourses", fields: [instructorId], references: [id])
+  categoryId   Int?
+  category     Category?    @relation(fields: [categoryId], references: [id])
+  modules      Module[]
+  enrollments  Enrollment[]
+  comments     Comment[]
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+}
+
+model Module {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String?
+  order       Int      @default(0)
+  courseId    Int
+  course      Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  lessons     Lesson[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Lesson {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String?
+  type        String   @default("video")
+  videoUrl    String?
+  order       Int      @default(0)
+  moduleId    Int
+  module      Module   @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+  quiz        Quiz?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Enrollment {
+  id           Int      @id @default(autoincrement())
+  userId       Int
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  courseId     Int
+  course       Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  progress     Float    @default(0)
+  isCompleted  Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@unique([userId, courseId])
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  text      String   @db.Text
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  courseId  Int
+  course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model LiveEvent {
+  id           Int      @id @default(autoincrement())
+  title        String
+  description  String?  @db.Text
+  date         DateTime
+  url          String?
+  instructorId Int
+  instructor   User     @relation("InstructorEvents", fields: [instructorId], references: [id])
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Quiz {
+  id          Int           @id @default(autoincrement())
+  title       String
+  lessonId    Int           @unique
+  lesson      Lesson        @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  questions   Question[]
+  attempts    QuizAttempt[]
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
+model Question {
+  id        Int      @id @default(autoincrement())
+  text      String   @db.Text
+  quizId    Int
+  quiz      Quiz     @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  answers   Answer[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Answer {
+  id         Int      @id @default(autoincrement())
+  text       String
+  isCorrect  Boolean  @default(false)
+  questionId Int
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model QuizAttempt {
+  id        Int      @id @default(autoincrement())
+  score     Float    @default(0)
+  passed    Boolean  @default(false)
+  userId    Int
+  user      User     @relation("UserQuizAttempts", fields: [userId], references: [id], onDelete: Cascade)
+  quizId    Int
+  quiz      Quiz     @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Notification {
+  id        Int      @id @default(autoincrement())
+  message   String   @db.Text
+  isRead    Boolean  @default(false)
+  userId    Int
+  user      User     @relation("UserNotifications", fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
